@@ -1,2 +1,21 @@
-@import './null.scss'
+@import './null.scss';
 
+@font-face {
+  font-family: 'FuturaBookC';
+  src: local('DancingScript'),
+    url('./../fonts/futura/futura-book-regular.otf') format('truetype');
+  font-weight: regular;
+}
+
+body {
+  font-family: 'FuturaBookC', sans-serif;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: rgb(206, 206, 139);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
