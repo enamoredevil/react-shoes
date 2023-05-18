@@ -1,0 +1,58 @@
+.footer {
+  border-top: 1px solid #fff;
+
+  &__container {
+    padding: 75px 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__description {
+    max-width: 400px;
+
+    h4 {
+      font-size: 26px;
+      text-transform: capitalize;
+      margin-bottom: 15px;
+    }
+
+    p {
+      line-height: 30px;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__payments {
+    h4 {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      img {
+        width: 100px;
+      }
+    }
+  }
+
+  &__services {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    h4 {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+  }
+}
