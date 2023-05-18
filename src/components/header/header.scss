@@ -22,4 +22,22 @@
     display: flex;
     gap: 50px;
   }
+
+  &__menu-button {
+    background-color: transparent;
+    position: relative;
+    z-index: 20;
+    display: none;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .header__navbar,
+  .header__icons {
+    display: none;
+  }
+
+  .header__menu-button {
+    display: block;
+  }
 }

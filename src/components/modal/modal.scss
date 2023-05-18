@@ -1,0 +1,39 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: end;
+
+  &__content {
+    background-color: #000;
+    height: 100%;
+    padding: 100px 100px 100px 25px;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+
+      a {
+        text-transform: uppercase;
+      }
+
+      li:last-child {
+        margin-top: 5px;
+        display: flex;
+        gap: 15px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .modal {
+    display: none;
+  }
+}
