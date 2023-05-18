@@ -1,0 +1,18 @@
+.shoes {
+  background-color: #fff;
+  color: #000;
+
+  &__container {
+    padding: 50px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+}
+

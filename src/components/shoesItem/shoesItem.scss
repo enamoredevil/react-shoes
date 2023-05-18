@@ -1,0 +1,60 @@
+.shoes__item {
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  max-width: 350px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  -webkit-box-shadow: 11px 11px 14px 6px rgba(34, 60, 80, 0.22);
+  -moz-box-shadow: 11px 11px 14px 6px rgba(34, 60, 80, 0.22);
+  box-shadow: 11px 11px 14px 6px rgba(34, 60, 80, 0.22);
+
+  &-img {
+    width: 200px;
+  }
+
+  &-title {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-align: left;
+  }
+
+  &-description {
+    font-size: 14px;
+    opacity: 0.5;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+
+  &-price {
+    width: 100%;
+    font-size: 28px;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  &-buttons {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-favorite-btn {
+    background-color: transparent;
+    
+    img {
+      width: 40px;
+    }
+  }
+
+  &-more-btn {
+    background-color: #000;
+    border-radius: 15px;
+    color: white;
+    padding: 15px 50px;
+    text-transform: uppercase;
+  }
+}

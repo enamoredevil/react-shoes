@@ -1,9 +1,9 @@
 import React from "react";
 
-import "./footer.scss";
+import visa from "../../assets/footer/visa.png";
+import mastercard from "../../assets/footer/mastercard.png";
 
-import visa from "../../assets/visa.png";
-import mastercard from "../../assets/mastercard.png";
+import "./footer.scss";
 
 const Footer = () => {
   return (
@@ -19,7 +19,6 @@ const Footer = () => {
             women and all the models fit the size grid, so you can easily buy
             new sneakers.
           </p>
-          <span>© 2023, Shoes.com</span>
         </div>
         <div className="footer__info">
           <div className="footer__payments">
@@ -38,6 +37,7 @@ const Footer = () => {
               <h4>Email:</h4>
               <span>Shoes@gmail.com</span>
             </div>
+            <span>© 2023, Shoes.com</span>
           </div>
         </div>
       </div>

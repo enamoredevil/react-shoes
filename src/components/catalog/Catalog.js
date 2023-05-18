@@ -1,8 +1,13 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import "./catalog.scss";
 
 const Catalog = () => {
+
+  console.log(process.env)
+
   return (
     <section className="catalog">
       <div className="catalog__container container">
@@ -14,7 +19,7 @@ const Catalog = () => {
               alt="men-catalog-sneakers"
             />
             <h4>Men Catalog</h4>
-            <a href="/">Open</a>
+            <Link to="/men">Open</Link>
           </div>
           <div className="catalog__item">
             <img
@@ -22,7 +27,7 @@ const Catalog = () => {
               alt="women-catalog-sneakers"
             />
             <h4>Women Catalog</h4>
-            <a href="/">Open</a>
+            <Link to="/women">Open</Link>
           </div>
           <div className="catalog__item">
             <img
@@ -30,7 +35,7 @@ const Catalog = () => {
               alt="unisex-catalog-sneakers"
             />
             <h4>Unisex Catalog</h4>
-            <a href="/">Open</a>
+            <Link to="/unisex">Open</Link>
           </div>
         </div>
       </div>

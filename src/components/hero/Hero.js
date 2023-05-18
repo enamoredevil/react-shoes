@@ -1,6 +1,6 @@
 import React from "react";
 
-import previewSneakers from "../../assets/preview-sneakers.webp";
+import previewSneakers from "../../assets/hero/preview-sneakers.webp";
 
 import "./hero.scss";
 
