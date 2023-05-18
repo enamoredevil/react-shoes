@@ -16,7 +16,7 @@ const Hero = () => {
           <p className="hero__description">
             Check out our collection of over 50 Nike models
           </p>
-          <a className="hero__link" href="/">Catalog</a>
+          <a className="hero__link" href="/">Read more</a>
         </div>
         <div className="hero__image-block">
           <img src={previewSneakers} alt="nike-wmns-air-max-97-se" />
