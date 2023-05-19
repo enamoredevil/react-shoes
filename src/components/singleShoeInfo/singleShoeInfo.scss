@@ -1,0 +1,88 @@
+.single-shoe {
+
+  &__info {
+    max-width: 710px;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: 700;
+  }
+
+  &__color-way {
+    display: block;
+    opacity: 0.5;
+    line-height: 1.5;
+    color: #2f2f2f;
+    margin-bottom: 25px;
+  }
+
+  &__price {
+    margin: 25px 0;
+    font-size: 36px;
+  }
+
+  &__desc {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  &__description {
+    margin-top: 5px;
+    line-height: 1.5;
+    color: #2f2f2f;
+  }
+
+  &__features {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    h4 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+    button {
+      color: #fff;
+      font-size: 18px;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: #000;
+    }
+  }
+}
+
+.features {
+  margin-bottom: 35px;
+
+  div {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__list-titles {
+    li {
+      font-weight: 700;
+    }
+  }
+}
+
+@media screen and (min-width: 410px) {
+  .single-shoe__buttons {
+    flex-direction: column;
+  }
+}

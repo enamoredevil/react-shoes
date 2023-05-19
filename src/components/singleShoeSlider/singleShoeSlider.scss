@@ -1,0 +1,39 @@
+.single-shoe-slider {
+  max-width: 600px;
+}
+
+.single-shoe-slide {
+  img {
+    max-width: 100%;
+  }
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #000;
+  border-radius: 50px;
+  padding: 30px;
+}
+
+.swiper-button-next::after {
+  content: url("../../assets/singleShoeSlider/arrow-right.svg");
+  position: absolute;
+  top: 2px;
+}
+
+.swiper-button-prev::after {
+  content: url("../../assets/singleShoeSlider/arrow-left.svg");
+  position: absolute;
+  top: 2px;
+}
+
+@media screen and (max-width: 625px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+
+  .single-shoe-slider {
+    max-width: 100%;
+  }
+}

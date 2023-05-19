@@ -18,6 +18,11 @@
     text-transform: uppercase;
   }
 
+  &__link_active {
+    text-transform: uppercase;
+    color: red;
+  }
+
   &__icons {
     display: flex;
     gap: 50px;

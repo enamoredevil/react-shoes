@@ -19,16 +19,21 @@
       flex-direction: column;
       gap: 25px;
 
-      a {
-        text-transform: uppercase;
-      }
-
       li:last-child {
         margin-top: 5px;
         display: flex;
         gap: 15px;
       }
     }
+  }
+
+  &__link {
+    text-transform: uppercase;
+  }
+
+  &__link_active {
+    text-transform: uppercase;
+    color: red;
   }
 }
 

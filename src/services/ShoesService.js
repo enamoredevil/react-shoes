@@ -20,8 +20,21 @@ const ShoesService = () => {
     }
   };
 
+  const getSingleShoe = async (id) => {
+    setStatus("loading");
+    try {
+      const response = await axios.get(URL + `/${id}`, {
+        headers: { "Content-Type": "application/json" },
+      });
+      return response.data;
+    } catch {
+      return undefined;
+    }
+  };
+
   return {
     getAllShoes,
+    getSingleShoe,
     status,
     setStatus,
   };

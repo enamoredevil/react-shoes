@@ -7,6 +7,10 @@ import "./header.scss";
 const Header = () => {
   const [isVisible, setIsVisible] = React.useState(false);
 
+  const setActiveLink = ({ isActive }) => {
+    return isActive ? "header__link_active" : "header__link";
+  };
+
   return (
     <header className="header">
       <div className="header__container container">
@@ -29,17 +33,17 @@ const Header = () => {
         <nav className="header__navbar">
           <ul className="header__list">
             <li className="header__item">
-              <NavLink to="/men" className="header__link">
+              <NavLink to="/men" className={setActiveLink}>
                 men
               </NavLink>
             </li>
             <li className="header__item">
-              <NavLink to="/women" className="header__link">
+              <NavLink to="/women" className={setActiveLink}>
                 women
               </NavLink>
             </li>
             <li className="header__item">
-              <NavLink to="/unisex" className="header__link">
+              <NavLink to="/unisex" className={setActiveLink}>
                 unisex
               </NavLink>
             </li>

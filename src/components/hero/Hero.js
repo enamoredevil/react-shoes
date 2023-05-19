@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import previewSneakers from "../../assets/hero/preview-sneakers.webp";
 
@@ -16,7 +17,7 @@ const Hero = () => {
           <p className="hero__description">
             Check out our collection of over 50 Nike models
           </p>
-          <a className="hero__link" href="/">Read more</a>
+          <Link className="hero__link" to="/women/shoes/23">Read more</Link>
         </div>
         <div className="hero__image-block">
           <img src={previewSneakers} alt="nike-wmns-air-max-97-se" />
