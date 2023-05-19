@@ -6,8 +6,6 @@ import "./catalog.scss";
 
 const Catalog = () => {
 
-  console.log(process.env)
-
   return (
     <section className="catalog">
       <div className="catalog__container container">

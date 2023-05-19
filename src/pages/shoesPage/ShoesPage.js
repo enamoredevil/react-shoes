@@ -2,34 +2,37 @@ import React from "react";
 
 import ShoesService from "../../services/ShoesService";
 
+import { setShoesContent } from "../../utils/setContentFunctions";
+
 import ShoesTop from "../../components/shoesTop/ShoesTop";
-import ShoesItem from "../../components/shoesItem/ShoesItem";
 
 import "./shoesPage.scss";
 
 const ShoesPage = ({ gender }) => {
-  const [shoes, setShoes] = React.useState([]);
+  const [shoes, setShoes] = React.useState(null);
 
-  const { getAllShoes } = ShoesService();
+  const { getAllShoes, status, setStatus } = ShoesService();
 
   React.useEffect(() => {
-    getAllShoes(gender)
-    .then(result => setShoes(result))
+    async function fetchData() {
+      const response = await getAllShoes(gender);
+      if (!response) {
+        setStatus("error");
+      } else {
+        setShoes(response);
+        setStatus("confirmed");
+      }
+    }
+    fetchData();
   }, [gender]);
 
-
-
-  const content = shoes.map(item => {
-    return <ShoesItem key={item.id} item={item} />
-  })
+  const content = setShoesContent(status, shoes);
 
   return (
     <section className="shoes">
       <div className="shoes__container container">
         <ShoesTop gender={gender} />
-        <div className="shoes__list">
-          {content}
-        </div>
+        <div className="shoes__list">{content}</div>
       </div>
     </section>
   );
