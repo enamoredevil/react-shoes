@@ -1,8 +1,16 @@
 import React from "react";
 
+import ShoesService from "../../services/ShoesService";
+
+import { AnimatePresence } from "framer-motion";
+import OnAddFavoritesPopUp from "../onAddFavoritesPopUp/OnAddFavoritesPopUp";
+
 import "./singleShoeInfo.scss";
 
 const SingleShoeInfo = ({ shoe }) => {
+  const [buttonState, setButtonState] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(false);
+
   const {
     title,
     colorWay,
@@ -12,13 +20,32 @@ const SingleShoeInfo = ({ shoe }) => {
     material,
     style,
     manufacturer,
+    isFavorite,
+    id,
   } = shoe;
+
+  React.useEffect(() => {
+    setButtonState(isFavorite === "false" ? false : true);
+  }, [isFavorite]);
+
+  const { toggleFavoriteShoe } = ShoesService();
+
+  const onAddFavoriteClick = async () => {
+    setIsVisible(true);
+    setButtonState(true);
+    await toggleFavoriteShoe(id, "true");
+  };
 
   return (
     <div className="single-shoe__info">
       <h1 className="single-shoe__title">{title}</h1>
       <span className="single-shoe__color-way">{colorWay}</span>
-      <h2 className="single-shoe__price">{price}</h2>
+      <div className="single-shoe__price">
+        <h2>{price}</h2>
+        <AnimatePresence>
+          {isVisible && <OnAddFavoritesPopUp setIsVisible={setIsVisible} />}
+        </AnimatePresence>
+      </div>
       <span className="single-shoe__desc">Description: </span>
       <p className="single-shoe__description">{description}</p>
       <div className="single-shoe__features features">
@@ -39,7 +66,11 @@ const SingleShoeInfo = ({ shoe }) => {
         </div>
       </div>
       <div className="single-shoe__buttons">
-        <button className="single-shoe__buttons-favorites">
+        <button
+          disabled={buttonState}
+          className="single-shoe__buttons-favorites"
+          onClick={onAddFavoriteClick}
+        >
           Add to favorites
         </button>
         <button className="single-shoe__buttons-cart">

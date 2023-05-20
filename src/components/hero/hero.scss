@@ -30,9 +30,12 @@
   }
 
   &__link {
-    border: 1px solid black;
+    font-size: 18px;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
     padding: 15px;
-    text-transform: uppercase;
+    border-radius: 15px;
   }
 
   &__image-block {

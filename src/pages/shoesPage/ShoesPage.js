@@ -1,10 +1,10 @@
 import React from "react";
 
+import ShoesTop from "../../components/shoesTop/ShoesTop";
+
 import ShoesService from "../../services/ShoesService";
 
 import { setShoesContent } from "../../utils/setContentFunctions";
-
-import ShoesTop from "../../components/shoesTop/ShoesTop";
 
 import "./shoesPage.scss";
 

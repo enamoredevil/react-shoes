@@ -21,6 +21,10 @@
   &__link_active {
     text-transform: uppercase;
     color: red;
+
+    svg {
+      fill: red;
+    }
   }
 
   &__icons {

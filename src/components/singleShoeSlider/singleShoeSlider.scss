@@ -27,10 +27,21 @@
   top: 2px;
 }
 
+.swiper-pagination {
+  position: absolute;
+  bottom: 0;
+  display: none;
+}
+
+
 @media screen and (max-width: 625px) {
   .swiper-button-next,
   .swiper-button-prev {
     display: none;
+  }
+
+  .swiper-pagination {
+    display: block;
   }
 
   .single-shoe-slider {

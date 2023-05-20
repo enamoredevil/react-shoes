@@ -1,11 +1,12 @@
 import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectCoverflow } from "swiper";
+import { Navigation, EffectFade, Pagination } from "swiper";
 
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 import "./singleShoeSlider.scss";
 
@@ -22,18 +23,24 @@ const SingleShoeSlider = ({ images, title }) => {
     <>
       <Swiper
         className="single-shoe-slider"
-        modules={[Navigation, EffectCoverflow]}
+        modules={[Navigation, EffectFade, Pagination]}
         spaceBetween={75}
         slidesPerView={1}
-        effect="coverflow"
+        effect="fade"
         navigation={{
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
+        }}
+        pagination={{
+          el: ".swiper-pagination",
+          type: "fraction",
+          clickable: true
         }}
       >
         <button className="swiper-button-prev"></button>
         {slides}
         <button className="swiper-button-next"></button>
+        <div className="swiper-pagination"></div>
       </Swiper>
     </>
   );

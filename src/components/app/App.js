@@ -7,6 +7,7 @@ import Footer from "../footer/Footer";
 import MainPage from "../../pages/MainPage";
 import ShoesPage from "../../pages/shoesPage/ShoesPage";
 import SingleShoesPage from "../../pages/singleShoesPage/SingleShoesPage";
+import FavoritesPage from "../../pages/FavoritesPage/FavoritesPage";
 
 import "./app.scss";
 
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/women" element={<ShoesPage gender="Women" /> } />
         <Route path="/unisex" element={<ShoesPage gender="Unisex" /> } />
         <Route path="/:gender/shoes/:id" element={<SingleShoesPage /> } />
+        <Route path="/favorites" element={<FavoritesPage /> } />
 
       </Routes>
       <Footer />

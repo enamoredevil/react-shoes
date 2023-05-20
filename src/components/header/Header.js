@@ -11,6 +11,16 @@ const Header = () => {
     return isActive ? "header__link_active" : "header__link";
   };
 
+  const links = ["men", "women", "unisex"].map((link) => {
+    return (
+      <li key={link} className="header__item">
+        <NavLink to={`/${link}`} className={setActiveLink}>
+          {link}
+        </NavLink>
+      </li>
+    );
+  });
+
   return (
     <header className="header">
       <div className="header__container container">
@@ -31,27 +41,11 @@ const Header = () => {
           </Link>
         </div>
         <nav className="header__navbar">
-          <ul className="header__list">
-            <li className="header__item">
-              <NavLink to="/men" className={setActiveLink}>
-                men
-              </NavLink>
-            </li>
-            <li className="header__item">
-              <NavLink to="/women" className={setActiveLink}>
-                women
-              </NavLink>
-            </li>
-            <li className="header__item">
-              <NavLink to="/unisex" className={setActiveLink}>
-                unisex
-              </NavLink>
-            </li>
-          </ul>
+          <ul className="header__list">{links}</ul>
         </nav>
         <div className="header__icons">
           <div className="header__icon">
-            <a href="/">
+            <NavLink className={setActiveLink} to="/favorites">
               <svg
                 width="20"
                 height="18"
@@ -67,10 +61,10 @@ const Header = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </NavLink>
           </div>
           <div className="header__icon">
-            <a href="/">
+            <NavLink className={setActiveLink} to="/cart">
               <svg
                 width="20"
                 height="20"
@@ -86,7 +80,7 @@ const Header = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-            </a>
+            </NavLink>
           </div>
         </div>
         <button

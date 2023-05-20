@@ -11,11 +11,11 @@ const ShoesSkeleton = (props) => (
     foregroundColor="#ecebeb"
     {...props}
   >
-    <rect x="32" y="30" rx="0" ry="0" width="280" height="200" /> 
-    <rect x="34" y="250" rx="0" ry="0" width="280" height="60" />
-    <rect x="34" y="345" rx="0" ry="0" width="120" height="40" />
-    <rect x="34" y="405" rx="0" ry="0" width="48" height="48" />
-    <rect x="120" y="405" rx="0" ry="0" width="200" height="51" />
+    <rect x="32" y="30" rx="20" ry="20" width="280" height="200" /> 
+    <rect x="34" y="250" rx="10" ry="10" width="280" height="60" />
+    <rect x="34" y="345" rx="10" ry="10" width="120" height="40" />
+    <rect x="34" y="405" rx="10" ry="10" width="48" height="48" />
+    <rect x="120" y="405" rx="10" ry="10" width="200" height="51" />
   </ContentLoader>
 )
 

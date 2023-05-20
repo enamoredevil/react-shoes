@@ -31,7 +31,9 @@ const SingleShoesPage = () => {
 
   return (
     <section className="single-shoe">
-      <div className="single-shoe__container container">{content}</div>
+      <div className="single-shoe__container container">
+        {content}
+      </div>
     </section>
   );
 };

@@ -1,13 +1,13 @@
 .shoes__item {
   background-color: white;
-  border-radius: 15px;
+  border-radius: 20px;
   padding: 15px;
   max-width: 350px;
   display: flex;
   flex-direction: column;
-  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
-  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
-  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 
   &-img {
     text-align: center;
@@ -33,27 +33,31 @@
   &-buttons {
     max-width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: 5px;
   }
 
   &-favorite-btn {
-    background-color: transparent;
-
-    &::after {
-      content: url("../../assets/shoesItem/favorite.svg");
-    }
-
-    img {
-      width: 40px;
-    }
+    background: #ffffff;
+    border: 2px solid #d1cfcf;
+    border-radius: 10px;
+    padding: 0 12px;
   }
 
+  &-favorite-btn_added {
+    background: linear-gradient(180deg, #89F09C 0%, #3CC755 100%);
+    padding: 0 12px;
+    border-radius: 10px;
+  }
+
+
   &-more-link {
+    display: flex;
+    align-items: center;
     background-color: #000;
     border-radius: 15px;
     color: white;
     padding: 15px 70px;
-    text-align: center;
     text-transform: uppercase;
     white-space: nowrap;
   }

@@ -1,0 +1,17 @@
+.popup {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+
+  span {
+    color: rgb(20, 204, 20);
+  }
+}
+
