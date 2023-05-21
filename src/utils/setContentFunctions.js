@@ -1,8 +1,11 @@
 import { MoonLoader } from "react-spinners";
 
+import { motion } from "framer-motion";
+
 import ShoesItem from "../components/shoesItem/ShoesItem";
 import ShoesSkeleton from "../components/shoesSkeleton/ShoesSkeleton";
 import ShoesError from "../components/shoesError/ShoesError";
+import ShoesItemsNotFound from "../components/shoesItemsNotFound/ShoesItemsNotFound";
 
 import SingleShoeSlider from "../components/singleShoeSlider/SingleShoeSlider";
 import SingleShoeInfo from "../components/singleShoeInfo/SingleShoeInfo";
@@ -10,15 +13,31 @@ import SingleShoeInfo from "../components/singleShoeInfo/SingleShoeInfo";
 import FavoritesItem from "../components/favoritesItem/FavoritesItem";
 import FavoritesEmpty from "../components/favoritesEmpty/FavoritesEmpty";
 
+import CartItem from "../components/cartItem/CartItem";
+import CartEmpty from "../components/cartEmpty/CartEmpty";
+
 export const setShoesContent = (status, shoes) => {
   switch (status) {
     case "loading":
-      return [...Array(16)].map((_, index) => <ShoesSkeleton key={index} />);
+      return (
+        <motion.div layout className="shoes__list">
+          {[...Array(16)].map((_, index) => (
+            <ShoesSkeleton key={index} />
+          ))}
+        </motion.div>
+      );
 
     case "confirmed":
-      return shoes.map((item) => {
-        return <ShoesItem key={item.id} item={item} />;
-      });
+      if (shoes.length === 0) {
+        return <ShoesItemsNotFound />;
+      }
+      return (
+        <motion.div layout className="shoes__list">
+          {shoes.map((item) => {
+            return <ShoesItem key={item.id} item={item} />;
+          })}
+        </motion.div>
+      );
     case "error":
       return <ShoesError />;
 
@@ -50,7 +69,7 @@ export const setSingleShoeContent = (status, shoe) => {
   }
 };
 
-export const setFavoritesShoeContent = (status, FavShoes, onShoeDelete) => {
+export const setFavoritesShoeContent = (status, favShoes, onShoeDelete) => {
   switch (status) {
     case "loading":
       return (
@@ -60,12 +79,12 @@ export const setFavoritesShoeContent = (status, FavShoes, onShoeDelete) => {
       );
 
     case "confirmed":
-      if (FavShoes.length === 0) {
+      if (favShoes.length === 0) {
         return <FavoritesEmpty />;
       }
       return (
         <div className="favorites__list">
-          {FavShoes.map((shoe) => {
+          {favShoes.map((shoe) => {
             return (
               <FavoritesItem
                 key={shoe.id}
@@ -76,6 +95,26 @@ export const setFavoritesShoeContent = (status, FavShoes, onShoeDelete) => {
           })}
         </div>
       );
+    case "error":
+      return <h2>ERROR</h2>;
+
+    default:
+  }
+};
+
+export const setCartShoeContent = (status, cartShoes, onShoeDelete) => {
+  switch (status) {
+    case "loading":
+      return <MoonLoader color="#000" size={80} speedMultiplier={1} />;
+
+    case "confirmed":
+      if (cartShoes.length === 0) {
+        return <CartEmpty />;
+      }
+      return cartShoes.map((shoe) => (
+        <CartItem key={shoe.id} shoe={shoe} onShoeDelete={onShoeDelete} />
+      ));
+
     case "error":
       return <h2>ERROR</h2>;
 

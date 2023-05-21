@@ -34,7 +34,7 @@ const SingleShoeSlider = ({ images, title }) => {
         pagination={{
           el: ".swiper-pagination",
           type: "fraction",
-          clickable: true
+          clickable: true,
         }}
       >
         <button className="swiper-button-prev"></button>

@@ -1,0 +1,21 @@
+.cart {
+  background-color: #fff;
+  color: #000;
+
+  &__container {
+    padding: 50px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__list {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+  }
+}

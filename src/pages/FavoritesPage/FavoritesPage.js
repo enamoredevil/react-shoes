@@ -6,6 +6,9 @@ import ShoesService from "../../services/ShoesService";
 
 import { setFavoritesShoeContent } from "../../utils/setContentFunctions";
 
+import { motion } from "framer-motion";
+import { animatedPagesVariants } from "../../utils/framerMotion";
+
 import "./favoritesPage.scss";
 
 
@@ -35,12 +38,17 @@ const FavoritesPage = () => {
   const content = setFavoritesShoeContent(status, favShoes, onShoeDelete);
 
   return (
-    <section className="favorites">
+    <motion.section 
+    variants={animatedPagesVariants}
+    initial="hidden"
+    animate="visible"
+    exit="exit"
+    className="favorites">
       <div className="favorites__container container">
         <FavoritesTop />
         {content}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

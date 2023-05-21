@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 import ShoesService from "../../services/ShoesService";
 
+import { motion } from "framer-motion";
+import { shoesItemVariants } from "../../utils/framerMotion";
+
 import "./shoesItem.scss";
 
 const ShoesItem = ({ item }) => {
@@ -21,9 +24,15 @@ const ShoesItem = ({ item }) => {
     const action = isAdded ? "false" : "true";
     await toggleFavoriteShoe(id, action);
   };
-
+ 
   return (
-    <div className="shoes__item">
+    <motion.div
+      variants={shoesItemVariants}
+      initial="hidden"
+      animate="visible"
+      className="shoes__item"
+      layout
+    >
       <div className="shoes__item-img">
         <img src={images[0]} alt={title} />
       </div>
@@ -58,7 +67,7 @@ const ShoesItem = ({ item }) => {
           Read more
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

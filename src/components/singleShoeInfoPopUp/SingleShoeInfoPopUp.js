@@ -3,11 +3,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { popupVariants } from "../../utils/framerMotion";
 
-import "./onAddFavoritesPopUp.scss";
+import "./singleShoeInfoPopUp.scss";
 
-export const OnAddFavoritesPopUp = ({ setIsVisible }) => {
+const SingleShoeInfoPopUp = ({ text, setVisibleFunction }) => {
   React.useEffect(() => {
-    setTimeout(() => setIsVisible(false), 3000);
+    setTimeout(() => setVisibleFunction(false), 3000);
   }, []);
 
   return (
@@ -16,12 +16,11 @@ export const OnAddFavoritesPopUp = ({ setIsVisible }) => {
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="popup"
-      key="popup"
+      className="single-shoe-popup"
     >
-      <span>Added to favorites</span>
+      <span>{text}</span>
     </motion.div>
   );
 };
 
-export default OnAddFavoritesPopUp;
+export default SingleShoeInfoPopUp;

@@ -1,11 +1,9 @@
-.favorites-empty {
-  padding-bottom: 150px;
-  background-color: #fff;
+.cart-empty {
+  padding: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 150px 15px;
 
   h2 {
     font-size: 38px;
@@ -31,14 +29,8 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
-  .favorites-empty {
-    padding-bottom: 100px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .favorites-empty {
-    padding-bottom: 0;
+@media screen and (max-width: 850px) {
+  .cart-empty {
+    padding-bottom: 50px;
   }
 }

@@ -20,11 +20,12 @@ const FavoritesItem = ({ shoe, onShoeDelete }) => {
         >
           Read More
         </Link>
+
         <button
           onClick={() => onShoeDelete(id, "false")}
           className="favorites__item-delete"
         >
-          Delete
+          Remove
         </button>
       </div>
     </div>

@@ -9,6 +9,12 @@
   -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
   box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 
+  &_favorite {
+    -webkit-box-shadow: 0px 5px 77px 2px rgba(34, 172, 38, 0.2);
+    -moz-box-shadow: 0px 5px 77px 2px rgba(34, 172, 38, 0.2);
+    box-shadow: 0px 5px 77px 2px rgba(34, 172, 38, 0.2);
+  }
+
   &-img {
     text-align: center;
     img {
@@ -33,7 +39,7 @@
   &-buttons {
     max-width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 5px;
   }
 
@@ -45,11 +51,10 @@
   }
 
   &-favorite-btn_added {
-    background: linear-gradient(180deg, #89F09C 0%, #3CC755 100%);
+    background: linear-gradient(180deg, #89f09c 0%, #3cc755 100%);
     padding: 0 12px;
     border-radius: 10px;
   }
-
 
   &-more-link {
     display: flex;

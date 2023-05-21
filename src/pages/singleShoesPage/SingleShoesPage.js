@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 
 import { setSingleShoeContent } from "../../utils/setContentFunctions";
 
+import { motion } from "framer-motion";
+import { animatedPagesVariants } from "../../utils/framerMotion";
+
 import "./singleShoesPage.scss";
 
 const SingleShoesPage = () => {
@@ -30,11 +33,15 @@ const SingleShoesPage = () => {
   const content = setSingleShoeContent(status, shoe);
 
   return (
-    <section className="single-shoe">
-      <div className="single-shoe__container container">
-        {content}
-      </div>
-    </section>
+    <motion.section
+      variants={animatedPagesVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="single-shoe"
+    >
+      <div className="single-shoe__container container">{content}</div>
+    </motion.section>
   );
 };
 

@@ -62,7 +62,8 @@
       background-color: #000;
     }
 
-    &-favorites:disabled {
+    &-favorites:disabled,
+    &-cart:disabled {
       opacity: 0.5;
       cursor: auto;
     }

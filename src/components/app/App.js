@@ -1,13 +1,10 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+
+import { AnimatePresence } from "framer-motion";
 
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
-
-import MainPage from "../../pages/MainPage";
-import ShoesPage from "../../pages/shoesPage/ShoesPage";
-import SingleShoesPage from "../../pages/singleShoesPage/SingleShoesPage";
-import FavoritesPage from "../../pages/FavoritesPage/FavoritesPage";
+import AnimatedRoutes from "../animatedRoutes/AnimatedRoutes";
 
 import "./app.scss";
 
@@ -15,16 +12,9 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <Routes>
-
-        <Route path="/" element={<MainPage />} />
-        <Route path="/men" element={<ShoesPage gender="Men" /> } />
-        <Route path="/women" element={<ShoesPage gender="Women" /> } />
-        <Route path="/unisex" element={<ShoesPage gender="Unisex" /> } />
-        <Route path="/:gender/shoes/:id" element={<SingleShoesPage /> } />
-        <Route path="/favorites" element={<FavoritesPage /> } />
-
-      </Routes>
+      <AnimatePresence mode="wait">
+        <AnimatedRoutes />
+      </AnimatePresence>
       <Footer />
     </div>
   );

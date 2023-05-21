@@ -1,15 +1,20 @@
 import React from "react";
 
 import ShoesTop from "../../components/shoesTop/ShoesTop";
+import ShoesSearch from "../../components/shoesSearch/ShoesSearch";
 
 import ShoesService from "../../services/ShoesService";
 
 import { setShoesContent } from "../../utils/setContentFunctions";
 
+import { motion } from "framer-motion";
+import { animatedPagesVariants } from "../../utils/framerMotion";
+
 import "./shoesPage.scss";
 
 const ShoesPage = ({ gender }) => {
-  const [shoes, setShoes] = React.useState(null);
+  const [shoes, setShoes] = React.useState([]);
+  const [filterString, setFilterString] = React.useState("");
 
   const { getAllShoes, status, setStatus } = ShoesService();
 
@@ -26,15 +31,39 @@ const ShoesPage = ({ gender }) => {
     fetchData();
   }, [gender]);
 
-  const content = setShoesContent(status, shoes);
+  const filterShoesByString = (shoes, filterString) => {
+    if (filterString.length === 0) {
+      return shoes;
+    } else {
+      return shoes.filter((item) => {
+        if (item.title.toLowerCase().indexOf(filterString.toLowerCase()) > -1) {
+          return item;
+        }
+      });
+    }
+  };
+
+  const content = setShoesContent(
+    status,
+    filterShoesByString(shoes, filterString)
+  );
 
   return (
-    <section className="shoes">
+    <motion.section
+      variants={animatedPagesVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="shoes"
+    >
       <div className="shoes__container container">
         <ShoesTop gender={gender} />
-        <div className="shoes__list">{content}</div>
+        <div className="shoes__filters">
+          <ShoesSearch setFilterString={setFilterString} />
+        </div>
+        {content}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

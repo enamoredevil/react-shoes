@@ -3,13 +3,19 @@ import React from "react";
 import ShoesService from "../../services/ShoesService";
 
 import { AnimatePresence } from "framer-motion";
-import OnAddFavoritesPopUp from "../onAddFavoritesPopUp/OnAddFavoritesPopUp";
+
+import SingleShoeInfoPopUp from "../singleShoeInfoPopUp/SingleShoeInfoPopUp";
 
 import "./singleShoeInfo.scss";
 
 const SingleShoeInfo = ({ shoe }) => {
-  const [buttonState, setButtonState] = React.useState(false);
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [favoriteButtonState, setFavoriteButtonState] = React.useState(false);
+  const [cartButtonState, setCartButtonState] = React.useState(false);
+  const [isFavoritePopUpVisible, setIsFavoritePopUpVisible] =
+    React.useState(false);
+  const [isCartPopUpVisible, setIsCartPopUpVisible] = React.useState(false);
+
+  const { toggleFavoriteShoe, toggleCartShoe } = ShoesService();
 
   const {
     title,
@@ -21,19 +27,25 @@ const SingleShoeInfo = ({ shoe }) => {
     style,
     manufacturer,
     isFavorite,
+    isCart,
     id,
   } = shoe;
 
   React.useEffect(() => {
-    setButtonState(isFavorite === "false" ? false : true);
-  }, [isFavorite]);
+    setFavoriteButtonState(isFavorite === "false" ? false : true);
+    setCartButtonState(isCart === "false" ? false : true);
+  }, [isFavorite, isCart]);
 
-  const { toggleFavoriteShoe } = ShoesService();
+  const onAddFavoriteClick = () => {
+    setIsFavoritePopUpVisible(true);
+    setFavoriteButtonState(true);
+    toggleFavoriteShoe(id, "true");
+  };
 
-  const onAddFavoriteClick = async () => {
-    setIsVisible(true);
-    setButtonState(true);
-    await toggleFavoriteShoe(id, "true");
+  const onAddCartClick = () => {
+    setIsCartPopUpVisible(true);
+    setCartButtonState(true);
+    toggleCartShoe(id, "true");
   };
 
   return (
@@ -43,7 +55,20 @@ const SingleShoeInfo = ({ shoe }) => {
       <div className="single-shoe__price">
         <h2>{price}</h2>
         <AnimatePresence>
-          {isVisible && <OnAddFavoritesPopUp setIsVisible={setIsVisible} />}
+          {isFavoritePopUpVisible && (
+            <SingleShoeInfoPopUp
+              key="favorite-popup"
+              text="Added to your favorites"
+              setVisibleFunction={setIsFavoritePopUpVisible}
+            />
+          )}
+          {isCartPopUpVisible && (
+            <SingleShoeInfoPopUp
+              key="cart-popup"
+              text="Added to your shopping cart"
+              setVisibleFunction={setIsCartPopUpVisible}
+            />
+          )}
         </AnimatePresence>
       </div>
       <span className="single-shoe__desc">Description: </span>
@@ -67,14 +92,22 @@ const SingleShoeInfo = ({ shoe }) => {
       </div>
       <div className="single-shoe__buttons">
         <button
-          disabled={buttonState}
+          disabled={favoriteButtonState}
           className="single-shoe__buttons-favorites"
           onClick={onAddFavoriteClick}
         >
-          Add to favorites
+          {favoriteButtonState
+            ? "Already in your favorites"
+            : "Add to your favorites"}
         </button>
-        <button className="single-shoe__buttons-cart">
-          Add to shopping cart
+        <button
+          disabled={cartButtonState}
+          className="single-shoe__buttons-cart"
+          onClick={onAddCartClick}
+        >
+          {cartButtonState
+            ? "Already in your shopping cart"
+            : "Add to your shopping cart"}
         </button>
       </div>
     </div>
