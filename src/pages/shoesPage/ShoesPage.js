@@ -2,10 +2,17 @@ import React from "react";
 
 import ShoesTop from "../../components/shoesTop/ShoesTop";
 import ShoesSearch from "../../components/shoesSearch/ShoesSearch";
+import ShoesFilters from "../../components/shoesFilters/ShoesFilters";
+import ShoesSorter from "../../components/shoesSorter/ShoesSorter";
 
 import ShoesService from "../../services/ShoesService";
 
 import { setShoesContent } from "../../utils/setContentFunctions";
+
+import {
+  filterShoesByButton,
+  filterShoesByString,
+} from "../../utils/filterFunctions";
 
 import { motion } from "framer-motion";
 import { animatedPagesVariants } from "../../utils/framerMotion";
@@ -15,6 +22,7 @@ import "./shoesPage.scss";
 const ShoesPage = ({ gender }) => {
   const [shoes, setShoes] = React.useState([]);
   const [filterString, setFilterString] = React.useState("");
+  const [filterButton, setFilterButton] = React.useState("All");
 
   const { getAllShoes, status, setStatus } = ShoesService();
 
@@ -31,22 +39,12 @@ const ShoesPage = ({ gender }) => {
     fetchData();
   }, [gender]);
 
-  const filterShoesByString = (shoes, filterString) => {
-    if (filterString.length === 0) {
-      return shoes;
-    } else {
-      return shoes.filter((item) => {
-        if (item.title.toLowerCase().indexOf(filterString.toLowerCase()) > -1) {
-          return item;
-        }
-      });
-    }
-  };
-
-  const content = setShoesContent(
-    status,
-    filterShoesByString(shoes, filterString)
+  const filtredShoes = filterShoesByButton(
+    filterShoesByString(shoes, filterString),
+    filterButton
   );
+
+  const content = setShoesContent(status, filtredShoes);
 
   return (
     <motion.section
@@ -58,9 +56,11 @@ const ShoesPage = ({ gender }) => {
     >
       <div className="shoes__container container">
         <ShoesTop gender={gender} />
-        <div className="shoes__filters">
+        <motion.div initial="hidden" animate="visible" className="shoes__panel">
           <ShoesSearch setFilterString={setFilterString} />
-        </div>
+          <ShoesFilters setFilterButton={setFilterButton} shoes={shoes} />
+          <ShoesSorter />
+        </motion.div>
         {content}
       </div>
     </motion.section>

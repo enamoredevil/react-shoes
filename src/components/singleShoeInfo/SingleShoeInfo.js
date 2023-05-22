@@ -2,7 +2,8 @@ import React from "react";
 
 import ShoesService from "../../services/ShoesService";
 
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { singleShoeInfoVariants } from "../../utils/framerMotion";
 
 import SingleShoeInfoPopUp from "../singleShoeInfoPopUp/SingleShoeInfoPopUp";
 
@@ -49,10 +50,28 @@ const SingleShoeInfo = ({ shoe }) => {
   };
 
   return (
-    <div className="single-shoe__info">
-      <h1 className="single-shoe__title">{title}</h1>
-      <span className="single-shoe__color-way">{colorWay}</span>
-      <div className="single-shoe__price">
+    <motion.div
+      transition={{ staggerChildren: 0.3 }}
+      initial="hidden"
+      animate="visible"
+      className="single-shoe__info"
+    >
+      <motion.h1
+        variants={singleShoeInfoVariants}
+        className="single-shoe__title"
+      >
+        {title}
+      </motion.h1>
+      <motion.span
+        variants={singleShoeInfoVariants}
+        className="single-shoe__color-way"
+      >
+        {colorWay}
+      </motion.span>
+      <motion.div
+        variants={singleShoeInfoVariants}
+        className="single-shoe__price"
+      >
         <h2>{price}</h2>
         <AnimatePresence>
           {isFavoritePopUpVisible && (
@@ -70,10 +89,23 @@ const SingleShoeInfo = ({ shoe }) => {
             />
           )}
         </AnimatePresence>
-      </div>
-      <span className="single-shoe__desc">Description: </span>
-      <p className="single-shoe__description">{description}</p>
-      <div className="single-shoe__features features">
+      </motion.div>
+      <motion.span
+        variants={singleShoeInfoVariants}
+        className="single-shoe__desc"
+      >
+        Description:{" "}
+      </motion.span>
+      <motion.p
+        variants={singleShoeInfoVariants}
+        className="single-shoe__description"
+      >
+        {description}
+      </motion.p>
+      <motion.div
+        variants={singleShoeInfoVariants}
+        className="single-shoe__features features"
+      >
         <h4>Main features:</h4>
         <div>
           <ul className="features__list">
@@ -89,9 +121,10 @@ const SingleShoeInfo = ({ shoe }) => {
             <li>{manufacturer}</li>
           </ul>
         </div>
-      </div>
+      </motion.div>
       <div className="single-shoe__buttons">
-        <button
+        <motion.button
+          variants={singleShoeInfoVariants}
           disabled={favoriteButtonState}
           className="single-shoe__buttons-favorites"
           onClick={onAddFavoriteClick}
@@ -99,8 +132,9 @@ const SingleShoeInfo = ({ shoe }) => {
           {favoriteButtonState
             ? "Already in your favorites"
             : "Add to your favorites"}
-        </button>
-        <button
+        </motion.button>
+        <motion.button
+          variants={singleShoeInfoVariants}
           disabled={cartButtonState}
           className="single-shoe__buttons-cart"
           onClick={onAddCartClick}
@@ -108,9 +142,9 @@ const SingleShoeInfo = ({ shoe }) => {
           {cartButtonState
             ? "Already in your shopping cart"
             : "Add to your shopping cart"}
-        </button>
+        </motion.button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

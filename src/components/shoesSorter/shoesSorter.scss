@@ -1,0 +1,16 @@
+.shoes__sorter {
+  border: 1px solid #fff;
+  padding: 50px;
+  max-width: 500px;
+  width: 100%;
+
+  &-select {
+    &__indicator-separator {
+      display: none !important;
+    }
+
+    &__indicators {
+      cursor: pointer !important;
+    }
+  }
+}

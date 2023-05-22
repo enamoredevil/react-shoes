@@ -11,11 +11,11 @@ import { animatedPagesVariants } from "../../utils/framerMotion";
 
 import "./favoritesPage.scss";
 
-
 const FavoritesPage = () => {
   const [favShoes, setFavShoes] = React.useState([]);
 
-  const { getFavoriteShoes, toggleFavoriteShoe, status, setStatus } = ShoesService();
+  const { getFavoriteShoes, toggleFavoriteShoe, status, setStatus } =
+    ShoesService();
 
   React.useEffect(() => {
     async function fetchData() {
@@ -38,12 +38,13 @@ const FavoritesPage = () => {
   const content = setFavoritesShoeContent(status, favShoes, onShoeDelete);
 
   return (
-    <motion.section 
-    variants={animatedPagesVariants}
-    initial="hidden"
-    animate="visible"
-    exit="exit"
-    className="favorites">
+    <motion.section
+      variants={animatedPagesVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="favorites"
+    >
       <div className="favorites__container container">
         <FavoritesTop />
         {content}

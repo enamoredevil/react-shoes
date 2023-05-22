@@ -46,7 +46,9 @@ const CartPage = () => {
     >
       <div className="cart__container container">
         <CartTop cartShoes={cartShoes} />
-        <div className="cart__list">{content}</div>
+        <div className="cart__list">
+          <AnimatePresence>{content}</AnimatePresence>
+        </div>
       </div>
     </motion.section>
   );

@@ -1,6 +1,6 @@
 import { MoonLoader } from "react-spinners";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import ShoesItem from "../components/shoesItem/ShoesItem";
 import ShoesSkeleton from "../components/shoesSkeleton/ShoesSkeleton";
@@ -83,17 +83,19 @@ export const setFavoritesShoeContent = (status, favShoes, onShoeDelete) => {
         return <FavoritesEmpty />;
       }
       return (
-        <div className="favorites__list">
-          {favShoes.map((shoe) => {
-            return (
-              <FavoritesItem
-                key={shoe.id}
-                onShoeDelete={onShoeDelete}
-                shoe={shoe}
-              />
-            );
-          })}
-        </div>
+        <motion.div layout className="favorites__list">
+          <AnimatePresence>
+            {favShoes.map((shoe) => {
+              return (
+                <FavoritesItem
+                  key={shoe.id}
+                  onShoeDelete={onShoeDelete}
+                  shoe={shoe}
+                />
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
       );
     case "error":
       return <h2>ERROR</h2>;
@@ -114,7 +116,6 @@ export const setCartShoeContent = (status, cartShoes, onShoeDelete) => {
       return cartShoes.map((shoe) => (
         <CartItem key={shoe.id} shoe={shoe} onShoeDelete={onShoeDelete} />
       ));
-
     case "error":
       return <h2>ERROR</h2>;
 
