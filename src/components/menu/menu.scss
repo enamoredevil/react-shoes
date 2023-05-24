@@ -1,4 +1,4 @@
-.modal {
+.menu {
   position: fixed;
   top: 0;
   left: 0;
@@ -43,7 +43,7 @@
 }
 
 @media screen and (min-width: 650px) {
-  .modal {
+  .menu {
     display: none;
   }
 }

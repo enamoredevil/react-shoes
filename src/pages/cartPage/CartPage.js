@@ -1,8 +1,8 @@
 import React from "react";
 
-import CartTop from "../../components/cartTop/CartTop";
-import CartHistoryModal from "../../components/cartHistoryModal/CartHistoryModal";
-import CartModal from "../../components/cartModal/CartModal";
+import CartTop from "../../components/cartPageComponents/cartTop/CartTop";
+import CartHistoryModal from "../../components/cartPageComponents/cartHistoryModal/CartHistoryModal";
+import CartModal from "../../components/cartPageComponents/cartModal/CartModal";
 
 import { setCartShoeContent } from "../../utils/setContentFunctions";
 
@@ -15,13 +15,13 @@ import "./cartPage.scss";
 
 const CartPage = () => {
   const [cartShoes, setCartShoes] = React.useState([]);
-
   const [isFormVisible, setIsFormVisible] = React.useState(false);
   const [isHistoryVisible, setIsHistoryVisible] = React.useState(false);
 
   const { getCartShoes, toggleCartShoe, status, setStatus } = ShoesService();
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     async function fetchData() {
       const response = await getCartShoes();
       if (!response) {

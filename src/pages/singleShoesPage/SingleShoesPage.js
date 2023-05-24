@@ -18,6 +18,7 @@ const SingleShoesPage = () => {
   const { getSingleShoe, status, setStatus } = ShoesService();
 
   React.useEffect(() => {
+    window.scrollTo(0, 0)
     async function fetchData() {
       const response = await getSingleShoe(id);
       if (response) {

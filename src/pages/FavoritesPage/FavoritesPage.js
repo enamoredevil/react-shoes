@@ -18,6 +18,7 @@ const FavoritesPage = () => {
     ShoesService();
 
   React.useEffect(() => {
+    window.scrollTo(0, 0)
     async function fetchData() {
       const response = await getFavoriteShoes();
       if (!response) {
@@ -32,7 +33,7 @@ const FavoritesPage = () => {
 
   const onShoeDelete = async (id, state) => {
     setFavShoes((favShoes) => favShoes.filter((favShoe) => favShoe.id !== id));
-    await toggleFavoriteShoe(id, state);
+    toggleFavoriteShoe(id, state);
   };
 
   const content = setFavoritesShoeContent(status, favShoes, onShoeDelete);

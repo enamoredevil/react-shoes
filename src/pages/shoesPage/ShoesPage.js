@@ -1,9 +1,9 @@
 import React from "react";
 
-import ShoesTop from "../../components/shoesTop/ShoesTop";
-import ShoesSearch from "../../components/shoesSearch/ShoesSearch";
-import ShoesFilters from "../../components/shoesFilters/ShoesFilters";
-import ShoesSorter from "../../components/shoesSorter/ShoesSorter";
+import ShoesTop from "../../components/shoesPageComponents/shoesTop/ShoesTop";
+import ShoesSearch from "../../components/shoesPageComponents/shoesSearch/ShoesSearch";
+import ShoesFilters from "../../components/shoesPageComponents/shoesFilters/ShoesFilters";
+import ShoesSorter from "../../components/shoesPageComponents/shoesSorter/ShoesSorter";
 
 import ShoesService from "../../services/ShoesService";
 
@@ -29,6 +29,7 @@ const ShoesPage = ({ gender }) => {
   const { getAllShoes, status, setStatus } = ShoesService();
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     async function fetchData() {
       const response = await getAllShoes(gender);
       if (!response) {

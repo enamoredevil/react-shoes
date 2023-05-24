@@ -1,0 +1,25 @@
+.error {
+  padding: 150px;
+
+  &__content {
+    color: rgb(234, 0, 0);
+    background-color: rgba(red, 0.5);
+    padding: 25px;
+    border-radius: 20px;
+
+    h2 {
+      text-align: center;
+      font-size: 24px;
+    }
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .error {
+    padding: 70px 15px;
+
+    &__content {
+      max-width: 100%;
+    }
+  }
+}

@@ -4,9 +4,15 @@ import { enableBodyScroll, disableBodyScroll } from "body-scroll-lock";
 
 import { NavLink } from "react-router-dom";
 
-import "./modal.scss";
+import { motion } from "framer-motion";
+import {
+  menuLayoutVariants,
+  menuContentVariants,
+} from "../../utils/framerMotion";
 
-const Modal = ({ setIsVisible }) => {
+import "./menu.scss";
+
+const Menu = ({ setIsVisible }) => {
   React.useEffect(() => {
     disableBodyScroll(document.body);
 
@@ -14,7 +20,7 @@ const Modal = ({ setIsVisible }) => {
   }, []);
 
   const setActiveLink = ({ isActive }) => {
-    return isActive ? "modal__link_active" : "modal__link";
+    return isActive ? "menu__link_active" : "menu__link";
   };
 
   const navLinks = ["men", "women", "unisex"].map((link) => {
@@ -31,10 +37,18 @@ const Modal = ({ setIsVisible }) => {
   });
 
   return (
-    <div onClick={() => setIsVisible(false)} className="modal">
-      <div
+    <motion.div
+      variants={menuLayoutVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      onClick={() => setIsVisible(false)}
+      className="menu"
+    >
+      <motion.div
+        variants={menuContentVariants}
         onClick={(event) => event.stopPropagation()}
-        className="modal__content"
+        className="menu__content"
       >
         <ul>
           {navLinks}
@@ -72,9 +86,9 @@ const Modal = ({ setIsVisible }) => {
             </NavLink>
           </li>
         </ul>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
-export default Modal;
+export default Menu;

@@ -1,102 +1,41 @@
-import React from "react";
-
-import axios from "axios";
+import useHttp from "../hooks/http.hook";
 
 const ShoesService = () => {
   const SHOES_URL = process.env.REACT_APP_SHOES_URL;
   const ORDERS_URL = process.env.REACT_APP_ORDERS_URL;
 
-  const [status, setStatus] = React.useState("waiting");
-
-  const headers = { "Content-Type": "application/json" };
+  const { getRequest, putRequest, postRequest, status, setStatus } = useHttp();
 
   const getAllShoes = async (gender) => {
-    setStatus("loading");
-    try {
-      const response = await axios.get(SHOES_URL, {
-        params: { gender },
-        headers,
-      });
-      return response.data;
-    } catch {
-      return undefined;
-    }
+    return await getRequest(SHOES_URL, "get", { gender });
   };
 
   const getSingleShoe = async (id) => {
-    setStatus("loading");
-    try {
-      const response = await axios.get(SHOES_URL + `/${id}`, {
-        headers,
-      });
-      return response.data;
-    } catch {
-      return undefined;
-    }
+    return await getRequest(SHOES_URL + `/${id}`, "get");
   };
 
   const getFavoriteShoes = async () => {
-    setStatus("loading");
-    try {
-      const response = await axios.get(SHOES_URL, {
-        params: { isFavorite: "true" },
-        headers,
-      });
-      return response.data;
-    } catch {
-      return undefined;
-    }
+    return await getRequest(SHOES_URL, "get", { isFavorite: "true" });
   };
 
   const toggleFavoriteShoe = (id, state) => {
-    // I think I'm supposed to use "patch" here instead of "put", but this mock API doesn't support it
-    axios.put(
-      SHOES_URL + `/${id}`,
-      { isFavorite: state },
-      {
-        headers,
-      }
-    );
+    putRequest(SHOES_URL + `/${id}`, { isFavorite: state });
   };
 
   const getCartShoes = async () => {
-    setStatus("loading");
-    try {
-      const response = await axios.get(SHOES_URL, {
-        params: { isCart: "true" },
-        headers,
-      });
-      return response.data;
-    } catch {
-      return undefined;
-    }
+    return await getRequest(SHOES_URL, "get", { isCart: "true" });
   };
 
-  const toggleCartShoe = (id, action) => {
-    // I think I'm supposed to use "patch" here instead of "put", but this mock API doesn't support it
-    axios.put(
-      SHOES_URL + `/${id}`,
-      { isCart: action },
-      {
-        headers,
-      }
-    );
+  const toggleCartShoe = (id, state) => {
+    putRequest(SHOES_URL + `/${id}`, { isCart: state });
   };
 
   const postOrderData = (data) => {
-    axios.post(ORDERS_URL, data, { headers });
+    postRequest(ORDERS_URL, data);
   };
 
   const getOrders = async () => {
-    setStatus("loading");
-    try {
-      const response = await axios.get(ORDERS_URL, {
-        headers,
-      });
-      return response.data;
-    } catch {
-      return undefined;
-    }
+    return await getRequest(ORDERS_URL, "get");
   };
 
   return {

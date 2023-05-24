@@ -12,9 +12,11 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      <AnimatePresence mode="wait">
-        <AnimatedRoutes />
-      </AnimatePresence>
+      <main>
+        <AnimatePresence mode="wait">
+          <AnimatedRoutes />
+        </AnimatePresence>
+      </main>
       <Footer />
     </div>
   );

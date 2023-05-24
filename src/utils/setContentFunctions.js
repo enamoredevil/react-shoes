@@ -3,18 +3,20 @@ import { MoonLoader } from "react-spinners";
 import { motion, AnimatePresence } from "framer-motion";
 import { historyItemVariants } from "./framerMotion";
 
-import ShoesItem from "../components/shoesItem/ShoesItem";
-import ShoesSkeleton from "../components/shoesSkeleton/ShoesSkeleton";
-import ShoesItemsNotFound from "../components/shoesItemsNotFound/ShoesItemsNotFound";
+import ShoesItem from "../components/shoesPageComponents/shoesItem/ShoesItem";
+import ShoesSkeleton from "../components/shoesPageComponents/shoesSkeleton/ShoesSkeleton";
+import ShoesItemsNotFound from "../components/shoesPageComponents/shoesItemsNotFound/ShoesItemsNotFound";
 
-import SingleShoeSlider from "../components/singleShoeSlider/SingleShoeSlider";
-import SingleShoeInfo from "../components/singleShoeInfo/SingleShoeInfo";
+import SingleShoeSlider from "../components/singleShoePageComponents/singleShoeSlider/SingleShoeSlider";
+import SingleShoeInfo from "../components/singleShoePageComponents/singleShoeInfo/SingleShoeInfo";
 
-import FavoritesItem from "../components/favoritesItem/FavoritesItem";
-import FavoritesEmpty from "../components/favoritesEmpty/FavoritesEmpty";
+import FavoritesItem from "../components/favoritesPageComponents/favoritesItem/FavoritesItem";
+import FavoritesEmpty from "../components/favoritesPageComponents/favoritesEmpty/FavoritesEmpty";
 
-import CartItem from "../components/cartItem/CartItem";
-import CartEmpty from "../components/cartEmpty/CartEmpty";
+import CartItem from "../components/cartPageComponents/cartItem/CartItem";
+import CartEmpty from "../components/cartPageComponents/cartEmpty/CartEmpty";
+
+import LoadingError from "../components/loadingError/LoadingError";
 
 export const setShoesContent = (status, shoes) => {
   switch (status) {
@@ -28,7 +30,6 @@ export const setShoesContent = (status, shoes) => {
       );
 
     case "confirmed":
-      // return <ShoesError />;
       if (shoes.length === 0) {
         return <ShoesItemsNotFound />;
       }
@@ -40,9 +41,9 @@ export const setShoesContent = (status, shoes) => {
         </motion.div>
       );
     case "error":
-      // return <ShoesError />;
-
+      return <LoadingError />;
     default:
+      return <LoadingError />;
   }
 };
 
@@ -64,9 +65,10 @@ export const setSingleShoeContent = (status, shoe) => {
       );
 
     case "error":
-      return <h1>ERROR</h1>;
+      return <LoadingError />;
 
     default:
+      return <LoadingError />;
   }
 };
 
@@ -99,9 +101,10 @@ export const setFavoritesShoeContent = (status, favShoes, onShoeDelete) => {
         </motion.div>
       );
     case "error":
-      return <h2>ERROR</h2>;
+      return <LoadingError />;
 
     default:
+      return <LoadingError />;
   }
 };
 
@@ -118,9 +121,10 @@ export const setCartShoeContent = (status, cartShoes, onShoeDelete) => {
         <CartItem key={shoe.id} shoe={shoe} onShoeDelete={onShoeDelete} />
       ));
     case "error":
-      return <h2>ERROR</h2>;
+      return <LoadingError />;
 
     default:
+      return <LoadingError />;
   }
 };
 
@@ -146,8 +150,9 @@ export const setCartHistoryContent = (status, orders) => {
       });
 
     case "error":
-      return <h2>ERROR</h2>;
+      return <LoadingError />;
 
     default:
+      return <LoadingError />;
   }
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
-import { animatedFavoritesItemVariants } from "../../utils/framerMotion";
+import { animatedFavoritesItemVariants } from "../../../utils/framerMotion";
 
 import "./favoritesItem.scss";
 

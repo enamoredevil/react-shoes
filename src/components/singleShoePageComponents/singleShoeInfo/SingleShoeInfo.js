@@ -1,11 +1,11 @@
 import React from "react";
 
-import ShoesService from "../../services/ShoesService";
+import ShoesService from "../../../services/ShoesService";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { singleShoeInfoVariants } from "../../utils/framerMotion";
+import { singleShoeInfoVariants } from "../../../utils/framerMotion";
 
-import SingleShoeInfoPopUp from "../singleShoeInfoPopUp/SingleShoeInfoPopUp";
+import SingleShoeInfoPopUp from "../../singleShoeInfoPopUp/SingleShoeInfoPopUp";
 
 import "./singleShoeInfo.scss";
 

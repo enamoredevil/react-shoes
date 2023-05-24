@@ -3,7 +3,7 @@ import React from "react";
 import _ from "lodash";
 
 import { motion } from "framer-motion";
-import { animatedPanelVariants } from "../../utils/framerMotion";
+import { animatedPanelVariants } from "../../../utils/framerMotion";
 
 import "./shoesFilters.scss";
 

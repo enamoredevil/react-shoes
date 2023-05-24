@@ -1,14 +1,14 @@
-@import './null.scss';
+@import "./null.scss";
 
 @font-face {
-  font-family: 'FuturaBookC';
-  src: local('DancingScript'),
-    url('./../fonts/futura/futura-book-regular.otf') format('truetype');
+  font-family: "FuturaBookC";
+  src: local("DancingScript"),
+    url("./../fonts/futura/futura-book-regular.otf") format("truetype");
   font-weight: regular;
 }
 
 body {
-  font-family: 'FuturaBookC', sans-serif;
+  font-family: "FuturaBookC", sans-serif;
   color: #fff;
   background: #fff;
   font-size: 18px;

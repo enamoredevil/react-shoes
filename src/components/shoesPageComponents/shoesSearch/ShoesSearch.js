@@ -1,7 +1,7 @@
 import React from "react";
 
 import { motion } from "framer-motion";
-import { animatedPanelVariants } from "../../utils/framerMotion";
+import { animatedPanelVariants } from "../../../utils/framerMotion";
 
 import "./shoesSearch.scss";
 

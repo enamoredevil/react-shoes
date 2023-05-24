@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import ShoesService from "../../services/ShoesService";
+import ShoesService from "../../../services/ShoesService";
 
 import { motion } from "framer-motion";
-import { shoesItemVariants } from "../../utils/framerMotion";
+import { shoesItemVariants } from "../../../utils/framerMotion";
 
 import "./shoesItem.scss";
 

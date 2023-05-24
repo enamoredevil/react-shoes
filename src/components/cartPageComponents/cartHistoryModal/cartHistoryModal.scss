@@ -14,6 +14,14 @@
 
   h2 {
     font-size: 36px;
+    margin-top: 30px;
+  }
+
+  &-close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: transparent;
   }
 
   &-list {

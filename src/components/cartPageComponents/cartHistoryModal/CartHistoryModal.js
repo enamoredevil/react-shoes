@@ -2,12 +2,12 @@ import React from "react";
 
 import { enableBodyScroll, disableBodyScroll } from "body-scroll-lock";
 
-import ShoesService from "../../services/ShoesService";
+import ShoesService from "../../../services/ShoesService";
 
-import { setCartHistoryContent } from "../../utils/setContentFunctions";
+import { setCartHistoryContent } from "../../../utils/setContentFunctions";
 
 import { motion } from "framer-motion";
-import { cartModalVariants } from "../../utils/framerMotion";
+import { cartModalVariants } from "../../../utils/framerMotion";
 
 import "./cartHistoryModal.scss";
 
@@ -41,7 +41,6 @@ const CartHistoryModal = ({ setIsHistoryVisible }) => {
     if (event.code === "Escape") {
       setIsHistoryVisible(false);
     }
-    console.log("check");
   };
 
   const content = setCartHistoryContent(status, orders);
@@ -61,7 +60,7 @@ const CartHistoryModal = ({ setIsHistoryVisible }) => {
       >
         <button
           onClick={() => setIsHistoryVisible(false)}
-          className="cart__modal-close-btn"
+          className="cart__history-modal-close-btn"
         >
           <svg height="48" viewBox="0 -960 960 960" width="48">
             <path d="m249-207-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />

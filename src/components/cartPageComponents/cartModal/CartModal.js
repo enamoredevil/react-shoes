@@ -5,13 +5,14 @@ import { enableBodyScroll, disableBodyScroll } from "body-scroll-lock";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-import ShoesService from "../../services/ShoesService";
+import ShoesService from "../../../services/ShoesService";
 
 import { motion } from "framer-motion";
+
 import {
   cartModalVariants,
   cartThanksMessageVariants,
-} from "../../utils/framerMotion";
+} from "../../../utils/framerMotion";
 
 import "./cartModal.scss";
 
@@ -64,7 +65,6 @@ const CartModal = ({ setIsFormVisible, cartShoes, setCartShoes, price }) => {
     if (event.code === "Escape") {
       setIsFormVisible(false);
     }
-    console.log("check");
   };
 
   return (

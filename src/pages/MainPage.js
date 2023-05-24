@@ -6,7 +6,7 @@ import { animatedPagesVariants } from "../utils/framerMotion";
 
 const MainPage = () => {
   return (
-    <motion.main
+    <motion.div
       variants={animatedPagesVariants}
       initial="hidden"
       animate="visible"
@@ -14,7 +14,7 @@ const MainPage = () => {
     >
       <Hero />
       <Catalog />
-    </motion.main>
+    </motion.div>
   );
 };
 
