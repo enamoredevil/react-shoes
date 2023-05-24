@@ -1,7 +1,6 @@
 import React from "react";
 
 import axios from "axios";
-import { head } from "lodash";
 
 const ShoesService = () => {
   const SHOES_URL = process.env.REACT_APP_SHOES_URL;

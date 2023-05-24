@@ -7,6 +7,7 @@ import ShoesPage from "../../pages/shoesPage/ShoesPage";
 import SingleShoesPage from "../../pages/singleShoesPage/SingleShoesPage";
 import FavoritesPage from "../../pages/favoritesPage/FavoritesPage";
 import CartPage from "../../pages/cartPage/CartPage";
+import Page404 from "../../pages/page404/Page404";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const AnimatedRoutes = () => {
       <Route path="/:gender/shoes/:id" element={<SingleShoesPage />} />
       <Route path="/favorites" element={<FavoritesPage />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="*" element={<Page404 />} />
     </Routes>
   );
 };

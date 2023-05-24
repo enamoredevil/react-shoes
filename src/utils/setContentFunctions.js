@@ -5,7 +5,6 @@ import { historyItemVariants } from "./framerMotion";
 
 import ShoesItem from "../components/shoesItem/ShoesItem";
 import ShoesSkeleton from "../components/shoesSkeleton/ShoesSkeleton";
-import ShoesError from "../components/shoesError/ShoesError";
 import ShoesItemsNotFound from "../components/shoesItemsNotFound/ShoesItemsNotFound";
 
 import SingleShoeSlider from "../components/singleShoeSlider/SingleShoeSlider";
@@ -29,6 +28,7 @@ export const setShoesContent = (status, shoes) => {
       );
 
     case "confirmed":
+      // return <ShoesError />;
       if (shoes.length === 0) {
         return <ShoesItemsNotFound />;
       }
@@ -40,7 +40,7 @@ export const setShoesContent = (status, shoes) => {
         </motion.div>
       );
     case "error":
-      return <ShoesError />;
+      // return <ShoesError />;
 
     default:
   }
