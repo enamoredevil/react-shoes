@@ -17,10 +17,11 @@
   }
 
   &__panel {
-    height: 200px;
+    min-height: 200px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 15px;
     background-color: #000;
     border-radius: 20px;
     padding: 25px;
@@ -37,6 +38,12 @@
   }
 }
 
+@media screen and (max-width: 1300px) {
+  .shoes__panel {
+    flex-direction: column;
+  }
+}
+
 @media screen and (max-width: 1015px) {
   .shoes__list {
     grid-template-columns: repeat(2, 1fr);
@@ -48,4 +55,3 @@
     grid-template-columns: 1fr;
   }
 }
-

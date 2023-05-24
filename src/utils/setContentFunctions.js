@@ -1,6 +1,7 @@
 import { MoonLoader } from "react-spinners";
 
 import { motion, AnimatePresence } from "framer-motion";
+import { historyItemVariants } from "./framerMotion";
 
 import ShoesItem from "../components/shoesItem/ShoesItem";
 import ShoesSkeleton from "../components/shoesSkeleton/ShoesSkeleton";
@@ -116,6 +117,34 @@ export const setCartShoeContent = (status, cartShoes, onShoeDelete) => {
       return cartShoes.map((shoe) => (
         <CartItem key={shoe.id} shoe={shoe} onShoeDelete={onShoeDelete} />
       ));
+    case "error":
+      return <h2>ERROR</h2>;
+
+    default:
+  }
+};
+
+export const setCartHistoryContent = (status, orders) => {
+  switch (status) {
+    case "loading":
+      return <MoonLoader color="#000" size={80} speedMultiplier={1} />;
+
+    case "confirmed":
+      if (orders.length === 0) {
+        return <h4>EMPTY</h4>;
+      }
+      return orders.map((order, index) => {
+        const { createdAt, name, price } = order;
+
+        return (
+          <motion.li variants={historyItemVariants} key={name + index}>
+            <h5>{createdAt.slice(0, -14)}</h5>
+            <span>Name: {name}</span>
+            <span>Paid: {price} €</span>
+          </motion.li>
+        );
+      });
+
     case "error":
       return <h2>ERROR</h2>;
 

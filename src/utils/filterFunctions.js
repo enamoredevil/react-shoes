@@ -1,29 +1,24 @@
 export const filterShoesByButton = (shoes, filter) => {
-  switch (filter) {
-    case "All":
+  if (filter === "All") {
+    return shoes;
+  }
+  return shoes.filter((item) => item.manufacturer === filter);
+};
+
+export const sortShoes = (shoes, sortParameter) => {
+  switch (sortParameter) {
+    case "Popular":
       return shoes;
-    case "Nike":
-      return shoes.filter((item) => item.manufacturer === "Nike");
-    case "New Balance":
-      return shoes.filter((item) => item.manufacturer === "New Balance");
-    case "Puma":
-      return shoes.filter((item) => item.manufacturer === "Puma");
-    case "Adidas":
-      return shoes.filter((item) => item.manufacturer === "Adidas");
-    case "Asics":
-      return shoes.filter((item) => item.manufacturer === "Asics");
-    case "Autry":
-      return shoes.filter((item) => item.manufacturer === "Autry");
-    case "Lacoste":
-      return shoes.filter((item) => item.manufacturer === "Lacoste");
-    case "Le Coq Sportif":
-      return shoes.filter((item) => item.manufacturer === "Le Coq Sportif");
-    case "Converse":
-      return shoes.filter((item) => item.manufacturer === "Converse");
-    case "Hoka":
-      return shoes.filter((item) => item.manufacturer === "Hoka");
-    case "Mizuno":
-      return shoes.filter((item) => item.manufacturer === "Mizuno");
+
+    case "Price Up":
+      return [...shoes].sort((itemOne, itemTwo) => {
+        return parseFloat(itemOne.price) - parseFloat(itemTwo.price);
+      });
+    case "Price Down":
+      return [...shoes].sort((itemOne, itemTwo) => {
+        return parseFloat(itemTwo.price) - parseFloat(itemOne.price);
+      });
+
     default:
       return shoes;
   }

@@ -41,7 +41,7 @@ const ShoesFilters = ({ shoes, setFilterButton }) => {
       <ul className="shoes__filters-list">
         <motion.li variants={animatedPanelVariants}>
           <button
-            data-brand="all"
+            data-brand="All"
             onClick={(event) => onButtonClick(event, -1)}
             className={
               activeButton === -1

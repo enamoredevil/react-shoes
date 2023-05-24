@@ -29,3 +29,11 @@
     color: gray;
   }
 }
+
+@media screen and (max-width: 240px) {
+  .favorites__top {
+    svg {
+      display: none;
+    }
+  }
+}

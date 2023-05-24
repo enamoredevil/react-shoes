@@ -2,13 +2,7 @@ import React from "react";
 
 import "./cartTop.scss";
 
-const CartTop = ({ cartShoes }) => {
-  let price = 0;
-
-  cartShoes.forEach((currentItem) => {
-    price += parseFloat(currentItem.price);
-  });
-
+const CartTop = ({ price, setIsFormVisible, setIsHistoryVisible }) => {
   return (
     <div className="cart__top">
       <div className="cart__top-info">
@@ -19,9 +13,23 @@ const CartTop = ({ cartShoes }) => {
           </svg>
         </div>
         <span>Main - Shopping Cart</span>
+        <button
+          onClick={() => setIsHistoryVisible(true)}
+          className="cart__top-info-button"
+        >
+          <span>History</span>
+        </button>
       </div>
       <div className="cart__top-price">
-        <h2>Total Price: <br /> {price.toFixed(2)} €</h2>
+        <h2>Total Price:</h2>
+        <span>{price} €</span>
+        <button
+          disabled={price === 0 ? true : false}
+          onClick={() => setIsFormVisible(true)}
+          className="cart__top-button"
+        >
+          Buy now
+        </button>
       </div>
     </div>
   );

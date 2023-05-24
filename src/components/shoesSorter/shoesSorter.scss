@@ -1,10 +1,54 @@
 .shoes__sorter {
-  border: 1px solid #fff;
-  padding: 50px;
-  max-width: 500px;
+  max-width: 400px;
   width: 100%;
 
   &-select {
+    &__control {
+      cursor: pointer !important;
+      outline: none !important;
+      box-shadow: none !important;
+
+      &--is-focused {
+        border-color: red !important;
+      }
+    }
+
+    &__option {
+      background-color: #fff !important;
+      color: #000 !important;
+      padding: 10px !important;
+      border-radius: 10px !important;
+      cursor: pointer !important;
+      font-size: 16px !important;
+      font-weight: 600 !important;
+      -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) !important;
+      -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) !important;
+      box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) !important;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: #f09b9b !important;
+      }
+
+      &--is-selected {
+        background-color: red !important;
+        cursor: auto !important;
+
+        &:hover {
+          background-color: red !important;
+        }
+      }
+    }
+
+    &__menu-list {
+      background-color: #fff !important;
+      color: #000 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      padding: 15px !important;
+    }
+
     &__indicator-separator {
       display: none !important;
     }

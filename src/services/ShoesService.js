@@ -1,9 +1,11 @@
 import React from "react";
 
 import axios from "axios";
+import { head } from "lodash";
 
 const ShoesService = () => {
-  const URL = process.env.REACT_APP_URL;
+  const SHOES_URL = process.env.REACT_APP_SHOES_URL;
+  const ORDERS_URL = process.env.REACT_APP_ORDERS_URL;
 
   const [status, setStatus] = React.useState("waiting");
 
@@ -12,7 +14,7 @@ const ShoesService = () => {
   const getAllShoes = async (gender) => {
     setStatus("loading");
     try {
-      const response = await axios.get(URL, {
+      const response = await axios.get(SHOES_URL, {
         params: { gender },
         headers,
       });
@@ -25,7 +27,7 @@ const ShoesService = () => {
   const getSingleShoe = async (id) => {
     setStatus("loading");
     try {
-      const response = await axios.get(URL + `/${id}`, {
+      const response = await axios.get(SHOES_URL + `/${id}`, {
         headers,
       });
       return response.data;
@@ -37,7 +39,7 @@ const ShoesService = () => {
   const getFavoriteShoes = async () => {
     setStatus("loading");
     try {
-      const response = await axios.get(URL, {
+      const response = await axios.get(SHOES_URL, {
         params: { isFavorite: "true" },
         headers,
       });
@@ -47,10 +49,10 @@ const ShoesService = () => {
     }
   };
 
-  const toggleFavoriteShoe = async (id, state) => {
+  const toggleFavoriteShoe = (id, state) => {
     // I think I'm supposed to use "patch" here instead of "put", but this mock API doesn't support it
-    await axios.put(
-      URL + `/${id}`,
+    axios.put(
+      SHOES_URL + `/${id}`,
       { isFavorite: state },
       {
         headers,
@@ -61,7 +63,7 @@ const ShoesService = () => {
   const getCartShoes = async () => {
     setStatus("loading");
     try {
-      const response = await axios.get(URL, {
+      const response = await axios.get(SHOES_URL, {
         params: { isCart: "true" },
         headers,
       });
@@ -71,15 +73,31 @@ const ShoesService = () => {
     }
   };
 
-  const toggleCartShoe = async (id, action) => {
+  const toggleCartShoe = (id, action) => {
     // I think I'm supposed to use "patch" here instead of "put", but this mock API doesn't support it
-    await axios.put(
-      URL + `/${id}`,
+    axios.put(
+      SHOES_URL + `/${id}`,
       { isCart: action },
       {
         headers,
       }
     );
+  };
+
+  const postOrderData = (data) => {
+    axios.post(ORDERS_URL, data, { headers });
+  };
+
+  const getOrders = async () => {
+    setStatus("loading");
+    try {
+      const response = await axios.get(ORDERS_URL, {
+        headers,
+      });
+      return response.data;
+    } catch {
+      return undefined;
+    }
   };
 
   return {
@@ -89,6 +107,8 @@ const ShoesService = () => {
     toggleFavoriteShoe,
     getCartShoes,
     toggleCartShoe,
+    postOrderData,
+    getOrders,
     status,
     setStatus,
   };

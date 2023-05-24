@@ -4,10 +4,14 @@ import Select from "react-select";
 
 import "./shoesSorter.scss";
 
-const ShoesSorter = () => {
-  const [value, setValue] = React.useState("");
+const ShoesSorter = ({ setSortParameter }) => {
+  const [value, setValue] = React.useState("Popular");
 
   const options = [
+    {
+      value: "Popular",
+      label: "Popular",
+    },
     {
       value: "Price Up",
       label: "Price Up",
@@ -18,11 +22,24 @@ const ShoesSorter = () => {
     },
   ];
 
+  const getValue = () => {
+    return value ? options.find((item) => item.value === value) : "";
+  };
+
+  const onChangeValue = (newValue) => {
+    setValue(newValue.value);
+    setSortParameter(newValue.value);
+  };
+
   return (
     <div className="shoes__sorter">
       <Select
-      placeholder="Sort by"
-      classNamePrefix="shoes__sorter-select" options={options}></Select>
+        onChange={onChangeValue}
+        value={getValue()}
+        placeholder="Sort by"
+        classNamePrefix="shoes__sorter-select"
+        options={options}
+      />
     </div>
   );
 };

@@ -12,6 +12,7 @@ import { setShoesContent } from "../../utils/setContentFunctions";
 import {
   filterShoesByButton,
   filterShoesByString,
+  sortShoes,
 } from "../../utils/filterFunctions";
 
 import { motion } from "framer-motion";
@@ -23,6 +24,7 @@ const ShoesPage = ({ gender }) => {
   const [shoes, setShoes] = React.useState([]);
   const [filterString, setFilterString] = React.useState("");
   const [filterButton, setFilterButton] = React.useState("All");
+  const [sortParameter, setSortParameter] = React.useState("");
 
   const { getAllShoes, status, setStatus } = ShoesService();
 
@@ -40,7 +42,7 @@ const ShoesPage = ({ gender }) => {
   }, [gender]);
 
   const filtredShoes = filterShoesByButton(
-    filterShoesByString(shoes, filterString),
+    filterShoesByString(sortShoes(shoes, sortParameter), filterString),
     filterButton
   );
 
@@ -59,7 +61,7 @@ const ShoesPage = ({ gender }) => {
         <motion.div initial="hidden" animate="visible" className="shoes__panel">
           <ShoesSearch setFilterString={setFilterString} />
           <ShoesFilters setFilterButton={setFilterButton} shoes={shoes} />
-          <ShoesSorter />
+          <ShoesSorter setSortParameter={setSortParameter} />
         </motion.div>
         {content}
       </div>

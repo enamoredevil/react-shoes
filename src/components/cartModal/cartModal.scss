@@ -1,0 +1,110 @@
+.cart__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(0.5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 15px;
+
+  
+  &-content {
+    overflow: auto;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #fff;
+    padding: 25px 20px;
+    border-radius: 15px;
+    position: relative;
+  }
+
+  &-price {
+    font-size: 36px;
+  }
+
+  &-close-btn {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+  }
+
+  &-title {
+    font-size: 48px;
+    padding: 20px 0 10px 0;
+    border-bottom: 1px solid gray;
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      background-color: #000;
+      color: #fff;
+      padding: 15px 70px;
+      border-radius: 10px;
+      font-size: 20px;
+      min-width: 200px;
+    }
+  }
+
+  &-error {
+    background-color: rgb(244, 162, 162);
+    border-radius: 10px;
+    color: red;
+    font-size: 18px;
+    margin: 0;
+    padding-left: 10px;
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    label {
+      font-size: 36px;
+    }
+
+    &-field {
+      padding: 10px;
+      border: 1px solid rgb(189, 179, 179);
+      border-radius: 10px;
+      color: #000;
+      font-size: 16px;
+
+      &::placeholder {
+        color: #000;
+        font-size: 16px;
+      }
+    }
+  }
+
+  &-thanks-message {
+    color: rgb(30, 197, 30);
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .cart__modal-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cart__modal-content {
+    height: 90vh;
+    padding: 15px;
+  }
+}
