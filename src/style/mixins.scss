@@ -23,6 +23,17 @@
     }
   }
 
+  &:active {
+    &:not([disabled]) {
+      @include box-shadow;
+      background-color: #d6d6d6;
+      color: #000;
+      transform: scale(1.05);
+    }
+  }
+
+
+
   &:disabled {
     background-color: rgb(111, 106, 106);
     cursor: auto;

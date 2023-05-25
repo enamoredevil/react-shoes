@@ -6,7 +6,8 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 20px;
-  padding: 20px;
+  padding: 40px 20px 20px 20px;
+  position: relative;
 
   &-info {
     span {
@@ -15,10 +16,19 @@
     }
 
     &-button {
-      margin-top: 5px;
-      display: block;
+      position: absolute;
+      top: 5px;
+      right: 10px;
       font-size: 18px;
       background-color: transparent;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      span {
+        color: #000;
+      }
     }
   }
   &-title {

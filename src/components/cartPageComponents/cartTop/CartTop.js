@@ -6,6 +6,12 @@ const CartTop = ({ price, setIsFormVisible, setIsHistoryVisible }) => {
   return (
     <div className="cart__top">
       <div className="cart__top-info">
+        <button
+          onClick={() => setIsHistoryVisible(true)}
+          className="cart__top-info-button"
+        >
+          <span>Orders History</span>
+        </button>
         <div className="cart__top-title">
           <h1>Shopping Cart</h1>
           <svg height="48" viewBox="0 96 960 960" width="48">
@@ -13,12 +19,6 @@ const CartTop = ({ price, setIsFormVisible, setIsHistoryVisible }) => {
           </svg>
         </div>
         <span>Main - Shopping Cart</span>
-        <button
-          onClick={() => setIsHistoryVisible(true)}
-          className="cart__top-info-button"
-        >
-          <span>History</span>
-        </button>
       </div>
       <div className="cart__top-price">
         <h2>Total Price:</h2>
