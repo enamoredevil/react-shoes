@@ -1,0 +1,43 @@
+.favorites {
+  background-color: #fff;
+  color: #000;
+
+  &__container {
+    padding: 50px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__list {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-self: center;
+    gap: 20px;
+  }
+
+  &__empty-list, &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .favorites__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .favorites__list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .favorites__list {
+    grid-template-columns: 1fr;
+  }
+}
