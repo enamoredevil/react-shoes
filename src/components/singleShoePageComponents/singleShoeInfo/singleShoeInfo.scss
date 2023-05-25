@@ -1,11 +1,10 @@
+@import "../../../style/mixins.scss";
+
 .single-shoe {
   &__info {
+    @include box-shadow;
     max-width: 710px;
     position: relative;
-
-    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
     padding: 20px;
     border-radius: 20px;
   }
@@ -61,11 +60,7 @@
     flex-direction: column;
 
     button {
-      color: #fff;
-      font-size: 18px;
-      padding: 15px;
-      border-radius: 10px;
-      background-color: #000;
+      @include button-link;
     }
     &-favorites,
     &-cart {

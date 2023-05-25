@@ -1,6 +1,8 @@
 import React from "react";
 
-import FavoritesTop from "../../components/favoritesTop/FavoritesTop";
+import { Helmet } from "react-helmet";
+
+import FavoritesTop from "../../components/favoritesPageComponents/favoritesTop/FavoritesTop";
 
 import ShoesService from "../../services/ShoesService";
 
@@ -18,7 +20,7 @@ const FavoritesPage = () => {
     ShoesService();
 
   React.useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     async function fetchData() {
       const response = await getFavoriteShoes();
       if (!response) {
@@ -46,6 +48,10 @@ const FavoritesPage = () => {
       exit="exit"
       className="favorites"
     >
+      <Helmet>
+        <title>Shoes - Favorites</title>
+        <meta name="description" content="Shoes Favorites Page" />
+      </Helmet>
       <div className="favorites__container container">
         <FavoritesTop />
         {content}

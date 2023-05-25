@@ -1,16 +1,7 @@
+@import "../../../style/mixins.scss";
+
 .cart__modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(0.5px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 50px 15px;
+  @include modal-layout;
 
   &-content {
     overflow: auto;
@@ -47,11 +38,7 @@
     justify-content: space-between;
 
     button {
-      background-color: #000;
-      color: #fff;
-      padding: 15px 70px;
-      border-radius: 10px;
-      font-size: 20px;
+      @include button-link;
       min-width: 200px;
     }
   }

@@ -1,3 +1,5 @@
+@import "../../style/mixins.scss";
+
 .catalog {
   background-color: #000;
   border-bottom: 1px solid #fff;
@@ -42,12 +44,8 @@
     }
 
     a {
+      @include button-link;
       margin-top: 20px;
-      font-size: 18px;
-      text-align: center;
-      background-color: #000;
-      color: #fff;
-      padding: 15px;
       border-radius: 10px;
     }
   }

@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Helmet } from "react-helmet";
+
 import ShoesTop from "../../components/shoesPageComponents/shoesTop/ShoesTop";
 import ShoesSearch from "../../components/shoesPageComponents/shoesSearch/ShoesSearch";
 import ShoesFilters from "../../components/shoesPageComponents/shoesFilters/ShoesFilters";
@@ -57,6 +59,10 @@ const ShoesPage = ({ gender }) => {
       exit="exit"
       className="shoes"
     >
+      <Helmet>
+        <title>Shoes - {gender}</title>
+        <meta name="description" content={`Page with shoes for ${gender}`} />
+      </Helmet>
       <div className="shoes__container container">
         <ShoesTop gender={gender} />
         <motion.div initial="hidden" animate="visible" className="shoes__panel">

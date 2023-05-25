@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Helmet } from "react-helmet";
+
 import ShoesService from "../../services/ShoesService";
 import { useParams } from "react-router-dom";
 
@@ -18,7 +20,7 @@ const SingleShoesPage = () => {
   const { getSingleShoe, status, setStatus } = ShoesService();
 
   React.useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     async function fetchData() {
       const response = await getSingleShoe(id);
       if (response) {
@@ -41,6 +43,13 @@ const SingleShoesPage = () => {
       exit="exit"
       className="single-shoe"
     >
+      <Helmet>
+        <title>Shoes - {`${shoe.title}`}</title>
+        <meta
+          name="description"
+          content={`Page with shoes for ${shoe.title}`}
+        />
+      </Helmet>
       <div className="single-shoe__container container">{content}</div>
     </motion.section>
   );

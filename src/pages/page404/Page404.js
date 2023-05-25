@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Helmet } from "react-helmet";
+
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
@@ -19,6 +21,10 @@ const Page404 = () => {
       exit="exit"
       className="page-404"
     >
+      <Helmet>
+        <title>Shoes - 404</title>
+        <meta name="description" content="Shoes Page 404" />
+      </Helmet>
       <div className="page-404__container container">
         <div className="background">
           <span></span>

@@ -1,12 +1,12 @@
+@import "../../../style/mixins.scss";
+
 .cart__top {
+  @include box-shadow;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 20px;
   padding: 20px;
-  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 
   &-info {
     span {
@@ -41,30 +41,19 @@
   }
 
   &-price {
+    @include box-shadow;
     padding: 15px;
     font-size: 38px;
     line-height: 50px;
     border-radius: 20px;
     max-width: 400px;
     width: 100%;
-    -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-    -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-    box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
   }
 
   &-button {
-    background-color: #000;
-    color: #fff;
-    padding: 15px 70px;
-    border-radius: 10px;
-    font-size: 20px;
+    @include button-link;
     max-width: 100%;
     width: 100%;
-
-    &:disabled {
-      background-color: rgb(111, 106, 106);
-      cursor: auto;
-    }
   }
 }
 

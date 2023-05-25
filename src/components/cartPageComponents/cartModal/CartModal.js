@@ -23,9 +23,10 @@ const CartModal = ({ setIsFormVisible, cartShoes, setCartShoes, price }) => {
 
   const validationSchema = Yup.object({
     name: Yup.string("Name must be a string")
+      .matches(/\D/gi, "Name can't contain only numbers")
       .required("Name is required")
       .min(4, "Name must be more than 4 letters"),
-    email: Yup.string()
+    email: Yup.string("Email must be a string")
       .email("Enter corrent email")
       .required("Email is required"),
   });

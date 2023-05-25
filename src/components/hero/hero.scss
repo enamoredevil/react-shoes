@@ -1,3 +1,5 @@
+@import "../../style/mixins.scss";
+
 .hero {
   background-color: #fff;
 
@@ -22,12 +24,7 @@
   }
 
   &__link {
-    font-size: 18px;
-    text-align: center;
-    background-color: #000;
-    color: #fff;
-    padding: 15px;
-    border-radius: 15px;
+    @include button-link;
   }
 
   &__image-block {

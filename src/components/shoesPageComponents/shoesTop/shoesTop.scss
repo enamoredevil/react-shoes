@@ -1,9 +1,10 @@
+@import "../../../style/mixins.scss";
+
 .shoes__top {
+  @include box-shadow;
   border-radius: 20px;
   padding: 25px;
-  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
-  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+
   h1 {
     font-size: 48px;
     line-height: 30px;

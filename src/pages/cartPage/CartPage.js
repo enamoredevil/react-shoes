@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Helmet } from "react-helmet";
+
 import CartTop from "../../components/cartPageComponents/cartTop/CartTop";
 import CartHistoryModal from "../../components/cartPageComponents/cartHistoryModal/CartHistoryModal";
 import CartModal from "../../components/cartPageComponents/cartModal/CartModal";
@@ -58,6 +60,10 @@ const CartPage = () => {
       exit="exit"
       className="cart"
     >
+      <Helmet>
+        <title>Shoes - Cart</title>
+        <meta name="description" content="Shoes Cart Page" />
+      </Helmet>
       <div className="cart__container container">
         <CartTop
           price={price}

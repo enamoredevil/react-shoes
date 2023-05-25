@@ -17,6 +17,11 @@
 
   &__link {
     text-transform: uppercase;
+    transition: color 0.5s;
+
+    &:hover {
+      color: rgb(255, 0, 0);
+    }
   }
 
   &__link_active {

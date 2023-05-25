@@ -5,7 +5,7 @@ import ShoesService from "../../../services/ShoesService";
 import { motion, AnimatePresence } from "framer-motion";
 import { singleShoeInfoVariants } from "../../../utils/framerMotion";
 
-import SingleShoeInfoPopUp from "../../singleShoeInfoPopUp/SingleShoeInfoPopUp";
+import SingleShoeInfoPopUp from "../singleShoeInfoPopUp/SingleShoeInfoPopUp"
 
 import "./singleShoeInfo.scss";
 

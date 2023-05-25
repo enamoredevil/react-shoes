@@ -1,7 +1,7 @@
 import React from "react";
 
 import { motion } from "framer-motion";
-import { popupVariants } from "../../utils/framerMotion";
+import { popupVariants } from "../../../utils/framerMotion";
 
 import "./singleShoeInfoPopUp.scss";
 

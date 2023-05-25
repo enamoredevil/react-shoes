@@ -1,3 +1,5 @@
+@import "../../../style/mixins.scss";
+
 .shoes__sorter {
   max-width: 400px;
   width: 100%;
@@ -14,6 +16,7 @@
     }
 
     &__option {
+      @include box-shadow;
       background-color: #fff !important;
       color: #000 !important;
       padding: 10px !important;
@@ -21,9 +24,6 @@
       cursor: pointer !important;
       font-size: 16px !important;
       font-weight: 600 !important;
-      -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) !important;
-      -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) !important;
-      box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) !important;
       transition: all 0.3s;
 
       &:hover {
