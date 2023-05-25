@@ -1,12 +1,5 @@
 @import "./null.scss";
 
-@font-face {
-  font-family: "FuturaBookC";
-  src: local("DancingScript"),
-    url("./../fonts/futura/futura-book-regular.otf") format("truetype");
-  font-weight: regular;
-}
-
 body {
   font-family: "Montserrat", sans-serif;
   color: #fff;
