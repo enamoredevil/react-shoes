@@ -1,7 +1,5 @@
 # React Shoes
 
----
-
 #### [React Shoes](https://shoes-cyan.vercel.app/) is an online shoes store
 
 **Stack:**
