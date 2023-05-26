@@ -1,26 +1,14 @@
 @import "../../../style/mixins.scss";
 
 .cart-empty {
-  padding: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @include empty-components;
 
   h2 {
-    font-size: 38px;
-    line-height: 30px;
-    margin-bottom: 18px;
-    font-weight: 700;
-    line-height: 50px;
-    text-align: center;
+    @include empty-components-titles;
   }
 
   p {
-    text-align: center;
-    max-width: 600px;
-    font-size: 20px;
-    margin-bottom: 20px;
+   @include empty-components-subtitles
   }
 
   a {

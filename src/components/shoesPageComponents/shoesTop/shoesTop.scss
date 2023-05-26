@@ -6,12 +6,9 @@
   padding: 25px;
 
   h1 {
-    font-size: 48px;
-    line-height: 30px;
-    margin-bottom: 18px;
+    @include pages-tops-titles;
   }
   span {
-    opacity: 0.7;
-    color: gray;
+    @include pages-tops-subtitles;
   }
 }

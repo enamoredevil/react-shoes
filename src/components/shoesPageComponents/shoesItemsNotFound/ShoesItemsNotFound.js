@@ -5,7 +5,7 @@ import "./shoesItemsNotFound.scss";
 const ShoesItemsNotFound = () => {
   return (
     <div className="shoes-not-found">
-      <h2>No result</h2>
+      <h2>No result :/</h2>
     </div>
   );
 };

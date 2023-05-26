@@ -2,17 +2,11 @@
 
 .cart__top {
   @include box-shadow;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 20px;
-  padding: 40px 20px 20px 20px;
-  position: relative;
+  @include pages-tops;
 
   &-info {
     span {
-      opacity: 0.7;
-      color: gray;
+      @include pages-tops-subtitles;
     }
 
     &-button {
@@ -36,11 +30,7 @@
     position: relative;
 
     h1 {
-      font-size: 38px;
-      line-height: 30px;
-      margin-bottom: 18px;
-      font-weight: 700;
-      line-height: 50px;
+      @include pages-tops-titles;
     }
 
     svg {

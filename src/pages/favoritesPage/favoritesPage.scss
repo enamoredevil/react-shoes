@@ -1,12 +1,10 @@
+@import "../../style/mixins.scss";
+
 .favorites {
-  background-color: #fff;
-  color: #000;
+  @include pages-sections;
 
   &__container {
-    padding: 50px 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    @include pages-containers;
   }
 
   &__list {
@@ -17,7 +15,8 @@
     gap: 20px;
   }
 
-  &__empty-list, &__loading {
+  &__empty-list,
+  &__loading {
     display: flex;
     justify-content: center;
     align-items: center;

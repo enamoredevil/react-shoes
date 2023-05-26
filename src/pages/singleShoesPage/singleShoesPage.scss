@@ -1,6 +1,7 @@
+@import "../../style/mixins.scss";
+
 .single-shoe {
-  background-color: #fff;
-  color: #000;
+  @include pages-sections;
 
   &__container {
     padding: 50px 15px;

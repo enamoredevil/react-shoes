@@ -62,13 +62,6 @@
     button {
       @include button-link;
     }
-    &-favorites,
-    &-cart {
-      &:disabled {
-        background-color: rgb(111, 106, 106);
-        cursor: auto;
-      }
-    }
   }
 }
 

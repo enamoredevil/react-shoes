@@ -1,12 +1,11 @@
+@import "../../style/mixins.scss";
+
 .footer {
   background-color: #000;
 
   &__container {
-    position: relative;
-    z-index: 10;
+    @include header-and-footer-containers;
     padding: 75px 15px;
-    display: flex;
-    justify-content: space-between;
   }
 
   &__description {

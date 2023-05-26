@@ -19,10 +19,10 @@ const ShoesItem = ({ item }) => {
     setIsAdded(isFavorite === "true" ? true : false);
   }, [isFavorite]);
 
-  const onAddFavoriteClick = async () => {
+  const onAddFavoriteClick = () => {
     setIsAdded(!isAdded);
     const action = isAdded ? "false" : "true";
-    await toggleFavoriteShoe(id, action);
+    toggleFavoriteShoe(id, action);
   };
 
   return (
