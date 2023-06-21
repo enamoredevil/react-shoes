@@ -16,3 +16,4 @@
 - **SCSS**
 - **Formik**
 - **Yup** 
+- **Mock API**
