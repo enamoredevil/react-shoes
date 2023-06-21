@@ -1,10 +1,14 @@
 import React from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchFavoriteShoes,
+  favoritesShoesSelector,
+} from "../../redux/slices/favoriteShoesSlice";
+
 import { Helmet } from "react-helmet";
 
 import FavoritesTop from "../../components/favoritesPageComponents/favoritesTop/FavoritesTop";
-
-import ShoesService from "../../services/ShoesService";
 
 import { setFavoritesShoeContent } from "../../utils/setContentFunctions";
 
@@ -14,31 +18,14 @@ import { animatedPagesVariants } from "../../utils/framerMotion";
 import "./favoritesPage.scss";
 
 const FavoritesPage = () => {
-  const [favShoes, setFavShoes] = React.useState([]);
+  const dispatch = useDispatch();
+  const { favoriteShoes, status } = useSelector(favoritesShoesSelector);
 
-  const { getFavoriteShoes, toggleFavoriteShoe, status, setStatus } =
-    ShoesService();
+  const content = setFavoritesShoeContent(status, favoriteShoes);
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
-    async function fetchData() {
-      const response = await getFavoriteShoes();
-      if (!response) {
-        setStatus("error");
-      } else {
-        setFavShoes(response);
-        setStatus("confirmed");
-      }
-    }
-    fetchData();
+    dispatch(fetchFavoriteShoes());
   }, []);
-
-  const onShoeDelete = async (id, state) => {
-    setFavShoes((favShoes) => favShoes.filter((favShoe) => favShoe.id !== id));
-    toggleFavoriteShoe(id, state);
-  };
-
-  const content = setFavoritesShoeContent(status, favShoes, onShoeDelete);
 
   return (
     <motion.section

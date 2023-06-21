@@ -1,8 +1,7 @@
 import React from "react";
+import { useGetOrdersQuery } from "../../../api/orders";
 
 import { enableBodyScroll, disableBodyScroll } from "body-scroll-lock";
-
-import ShoesService from "../../../services/ShoesService";
 
 import { setCartHistoryContent } from "../../../utils/setContentFunctions";
 
@@ -12,36 +11,23 @@ import { cartModalVariants } from "../../../utils/framerMotion";
 import "./cartHistoryModal.scss";
 
 const CartHistoryModal = ({ setIsHistoryVisible }) => {
-  const [orders, setOrders] = React.useState([]);
-
-  const { getOrders, status, setStatus } = ShoesService();
-
-  React.useEffect(() => {
-    window.addEventListener("keydown", closeModalByEscape);
-    disableBodyScroll(document.body);
-
-    async function fetchData() {
-      const response = await getOrders();
-      if (!response) {
-        setStatus("error");
-      } else {
-        setOrders(response);
-        setStatus("confirmed");
-      }
-    }
-    fetchData();
-
-    return () => {
-      enableBodyScroll(document.body);
-      window.removeEventListener("keydown", closeModalByEscape);
-    };
-  }, []);
+  const { data: orders, status } = useGetOrdersQuery();
 
   const closeModalByEscape = (event) => {
     if (event.code === "Escape") {
       setIsHistoryVisible(false);
     }
   };
+
+  React.useEffect(() => {
+    window.addEventListener("keydown", closeModalByEscape);
+    disableBodyScroll(document.body);
+
+    return () => {
+      enableBodyScroll(document.body);
+      window.removeEventListener("keydown", closeModalByEscape);
+    };
+  }, []);
 
   const content = setCartHistoryContent(status, orders);
 

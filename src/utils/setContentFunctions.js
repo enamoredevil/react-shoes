@@ -1,4 +1,4 @@
-import { MoonLoader } from "react-spinners";
+import { MoonLoader, BeatLoader } from "react-spinners";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { historyItemVariants } from "./framerMotion";
@@ -20,7 +20,7 @@ import LoadingError from "../components/loadingError/LoadingError";
 
 export const setShoesContent = (status, shoes) => {
   switch (status) {
-    case "loading":
+    case "pending":
       return (
         <motion.div layout className="shoes__list">
           {[...Array(16)].map((_, index) => (
@@ -29,7 +29,7 @@ export const setShoesContent = (status, shoes) => {
         </motion.div>
       );
 
-    case "confirmed":
+    case "fulfilled":
       if (shoes.length === 0) {
         return <ShoesItemsNotFound />;
       }
@@ -40,31 +40,31 @@ export const setShoesContent = (status, shoes) => {
           })}
         </motion.div>
       );
-    case "error":
+    case "rejected":
       return <LoadingError />;
     default:
       return <LoadingError />;
   }
 };
 
-export const setSingleShoeContent = (status, shoe) => {
+export const setSingleShoeContent = (status) => {
   switch (status) {
-    case "loading":
+    case "pending":
       return (
         <div className="single-shoe__loading">
           <MoonLoader color="#000" size={80} />
         </div>
       );
 
-    case "confirmed":
+    case "fulfilled":
       return (
         <>
-          <SingleShoeSlider images={shoe.images} title={shoe.title} />
-          <SingleShoeInfo shoe={shoe} />
+          <SingleShoeSlider />
+          <SingleShoeInfo />
         </>
       );
 
-    case "error":
+    case "rejected":
       return <LoadingError />;
 
     default:
@@ -72,16 +72,16 @@ export const setSingleShoeContent = (status, shoe) => {
   }
 };
 
-export const setFavoritesShoeContent = (status, favShoes, onShoeDelete) => {
+export const setFavoritesShoeContent = (status, favShoes) => {
   switch (status) {
-    case "loading":
+    case "pending":
       return (
         <div className="favorites__loading">
           <MoonLoader color="#000" size={80} speedMultiplier={1} />
         </div>
       );
 
-    case "confirmed":
+    case "fulfilled":
       if (favShoes.length === 0) {
         return <FavoritesEmpty />;
       }
@@ -89,18 +89,12 @@ export const setFavoritesShoeContent = (status, favShoes, onShoeDelete) => {
         <motion.div layout className="favorites__list">
           <AnimatePresence>
             {favShoes.map((shoe) => {
-              return (
-                <FavoritesItem
-                  key={shoe.id}
-                  onShoeDelete={onShoeDelete}
-                  shoe={shoe}
-                />
-              );
+              return <FavoritesItem key={shoe.id} shoe={shoe} />;
             })}
           </AnimatePresence>
         </motion.div>
       );
-    case "error":
+    case "rejected":
       return <LoadingError />;
 
     default:
@@ -108,19 +102,17 @@ export const setFavoritesShoeContent = (status, favShoes, onShoeDelete) => {
   }
 };
 
-export const setCartShoeContent = (status, cartShoes, onShoeDelete) => {
+export const setCartShoeContent = (status, cartShoes) => {
   switch (status) {
-    case "loading":
+    case "pending":
       return <MoonLoader color="#000" size={80} speedMultiplier={1} />;
 
-    case "confirmed":
+    case "fulfilled":
       if (cartShoes.length === 0) {
         return <CartEmpty />;
       }
-      return cartShoes.map((shoe) => (
-        <CartItem key={shoe.id} shoe={shoe} onShoeDelete={onShoeDelete} />
-      ));
-    case "error":
+      return cartShoes.map((shoe) => <CartItem key={shoe.id} shoe={shoe} />);
+    case "rejected":
       return <LoadingError />;
 
     default:
@@ -130,12 +122,12 @@ export const setCartShoeContent = (status, cartShoes, onShoeDelete) => {
 
 export const setCartHistoryContent = (status, orders) => {
   switch (status) {
-    case "loading":
+    case "pending":
       return <MoonLoader color="#000" size={80} speedMultiplier={1} />;
 
-    case "confirmed":
+    case "fulfilled":
       if (orders.length === 0) {
-        return <h4>EMPTY</h4>;
+        return <h4>No one has ordered anything yet...</h4>;
       }
       return orders.map((order, index) => {
         const { createdAt, name, price } = order;
@@ -149,10 +141,27 @@ export const setCartHistoryContent = (status, orders) => {
         );
       });
 
-    case "error":
+    case "rejected":
       return <LoadingError />;
 
     default:
       return <LoadingError />;
+  }
+};
+
+// for the buttons in "singleShoeInfo" component
+export const setButtonsContent = (status, type) => {
+  switch (status) {
+    case "true":
+      return <span>Already in your {type}</span>;
+
+    case "false":
+      return <span>Add to your {type}</span>;
+
+    case "pending":
+      return <BeatLoader color="#ff0000" size={20} speedMultiplier={0.5} />;
+
+    default:
+      return <BeatLoader color="#ff0000" size={20} speedMultiplier={0.5} />;
   }
 };

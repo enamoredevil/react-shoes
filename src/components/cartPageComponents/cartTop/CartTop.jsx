@@ -24,7 +24,7 @@ const CartTop = ({ price, setIsFormVisible, setIsHistoryVisible }) => {
         <h2>Total Price:</h2>
         <span>{price} €</span>
         <button
-          disabled={price === 0 ? true : false}
+          disabled={!price}
           onClick={() => setIsFormVisible(true)}
           className="cart__top-button"
         >

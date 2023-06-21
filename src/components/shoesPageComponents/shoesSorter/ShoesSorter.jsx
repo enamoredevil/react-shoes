@@ -1,11 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { filtersActions } from "../../../redux/slices/filtersSlice";
 
 import Select from "react-select";
 
 import "./shoesSorter.scss";
 
-const ShoesSorter = ({ setSortParameter }) => {
+const ShoesSorter = () => {
   const [value, setValue] = React.useState("Popular");
+
+  const dispatch = useDispatch();
 
   const options = [
     {
@@ -28,7 +32,7 @@ const ShoesSorter = ({ setSortParameter }) => {
 
   const onChangeValue = (newValue) => {
     setValue(newValue.value);
-    setSortParameter(newValue.value);
+    dispatch(filtersActions.setActiveSorter(newValue.value));
   };
 
   return (

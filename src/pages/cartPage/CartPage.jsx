@@ -1,5 +1,12 @@
 import React from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchCartShoes,
+  cartShoesActions,
+  cartShoesSelector,
+} from "../../redux/slices/cartShoesSlice";
+
 import { Helmet } from "react-helmet";
 
 import CartTop from "../../components/cartPageComponents/cartTop/CartTop";
@@ -8,50 +15,28 @@ import CartModal from "../../components/cartPageComponents/cartModal/CartModal";
 
 import { setCartShoeContent } from "../../utils/setContentFunctions";
 
-import ShoesService from "../../services/ShoesService";
-
 import { motion, AnimatePresence } from "framer-motion";
 import { animatedPagesVariants } from "../../utils/framerMotion";
 
 import "./cartPage.scss";
 
 const CartPage = () => {
-  const [cartShoes, setCartShoes] = React.useState([]);
   const [isFormVisible, setIsFormVisible] = React.useState(false);
   const [isHistoryVisible, setIsHistoryVisible] = React.useState(false);
 
-  const { getCartShoes, toggleCartShoe, status, setStatus } = ShoesService();
+  const { cartShoes, status, totalPrice } = useSelector(cartShoesSelector);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    async function fetchData() {
-      const response = await getCartShoes();
-      if (!response) {
-        setStatus("error");
-      } else {
-        setCartShoes(response);
-        setStatus("confirmed");
-      }
-    }
-    fetchData();
+    dispatch(fetchCartShoes());
   }, []);
 
-  const onShoeDelete = (id) => {
-    setCartShoes((cartShoes) => cartShoes.filter((item) => item.id !== id));
-    toggleCartShoe(id, "false");
-  };
+  React.useEffect(() => {
+    dispatch(cartShoesActions.setTotalPrice());
+  }, [cartShoes]);
 
-  const calculatePrice = (cartShoes) => {
-    let price = 0;
-    cartShoes.forEach((currentItem) => {
-      price += parseFloat(currentItem.price);
-    });
-    return +price.toFixed(2);
-  };
-
-  const price = calculatePrice(cartShoes);
-  const content = setCartShoeContent(status, cartShoes, onShoeDelete);
-
+  const content = setCartShoeContent(status, cartShoes);
   return (
     <motion.section
       variants={animatedPagesVariants}
@@ -66,8 +51,7 @@ const CartPage = () => {
       </Helmet>
       <div className="cart__container container">
         <CartTop
-          price={price}
-          setCartShoes={setCartShoes}
+          price={totalPrice}
           cartShoes={cartShoes}
           setIsFormVisible={setIsFormVisible}
           setIsHistoryVisible={setIsHistoryVisible}
@@ -75,14 +59,7 @@ const CartPage = () => {
         <div className="cart__list">
           <AnimatePresence>{content}</AnimatePresence>
           <AnimatePresence>
-            {isFormVisible && (
-              <CartModal
-                setIsFormVisible={setIsFormVisible}
-                cartShoes={cartShoes}
-                setCartShoes={setCartShoes}
-                price={price}
-              />
-            )}
+            {isFormVisible && <CartModal setIsFormVisible={setIsFormVisible} />}
           </AnimatePresence>
           <AnimatePresence>
             {isHistoryVisible && (

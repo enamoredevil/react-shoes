@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { removeCartShoe } from "../../../redux/slices/cartShoesSlice";
 
 import { Link } from "react-router-dom";
 
@@ -7,8 +9,14 @@ import { cartItemVariants } from "../../../utils/framerMotion";
 
 import "./cartItem.scss";
 
-const CartItem = ({ shoe, onShoeDelete }) => {
+const CartItem = ({ shoe }) => {
   const { title, price, images, gender, id } = shoe;
+
+  const dispatch = useDispatch();
+
+  const onRemoveCartShoe = () => {
+    dispatch(removeCartShoe({ id }));
+  };
 
   return (
     <motion.div
@@ -26,7 +34,7 @@ const CartItem = ({ shoe, onShoeDelete }) => {
         <span>{price}</span>
         <div className="cart__item-buttons">
           <Link to={`/${gender.toLowerCase()}/shoes/${id}`}>Read More</Link>
-          <button onClick={() => onShoeDelete(id)}>Remove</button>
+          <button onClick={onRemoveCartShoe}>Remove</button>
         </div>
       </div>
     </motion.div>

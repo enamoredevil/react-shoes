@@ -1,16 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { filtersActions } from "../../../redux/slices/filtersSlice";
 
 import { motion } from "framer-motion";
 import { animatedPanelVariants } from "../../../utils/framerMotion";
 
 import "./shoesSearch.scss";
 
-const ShoesSearch = ({ setFilterString }) => {
+const ShoesSearch = () => {
   const [value, setValue] = React.useState("");
+
+  const dispatch = useDispatch();
 
   const onInputChange = (event) => {
     setValue(event.target.value);
-    setFilterString(event.target.value);
+    dispatch(filtersActions.setSearchString(event.target.value));
   };
 
   return (

@@ -1,25 +1,30 @@
 import React from "react";
 
+import { usePostOrderMutation } from "../../../api/orders";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeCartShoe,
+  cartShoesSelector,
+} from "../../../redux/slices/cartShoesSlice";
+
 import { enableBodyScroll, disableBodyScroll } from "body-scroll-lock";
 
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-import ShoesService from "../../../services/ShoesService";
+import { toast } from "react-toastify";
 
 import { motion } from "framer-motion";
 
-import {
-  cartModalVariants,
-  cartThanksMessageVariants,
-} from "../../../utils/framerMotion";
+import { cartModalVariants } from "../../../utils/framerMotion";
 
 import "./cartModal.scss";
 
-const CartModal = ({ setIsFormVisible, cartShoes, setCartShoes, price }) => {
-  const [isThanksMessage, setIsThanksMessage] = React.useState(false);
+const CartModal = ({ setIsFormVisible }) => {
+  const [postOrder] = usePostOrderMutation();
 
-  const { postOrderData, toggleCartShoe } = ShoesService();
+  const { cartShoes, totalPrice } = useSelector(cartShoesSelector);
+  const dispatch = useDispatch();
 
   const validationSchema = Yup.object({
     name: Yup.string("Name must be a string")
@@ -30,6 +35,12 @@ const CartModal = ({ setIsFormVisible, cartShoes, setCartShoes, price }) => {
       .email("Enter corrent email")
       .required("Email is required"),
   });
+
+  const closeModalByEscape = (event) => {
+    if (event.code === "Escape") {
+      setIsFormVisible(false);
+    }
+  };
 
   React.useEffect(() => {
     window.addEventListener("keydown", closeModalByEscape);
@@ -43,29 +54,18 @@ const CartModal = ({ setIsFormVisible, cartShoes, setCartShoes, price }) => {
   }, []);
 
   const onFormSubmit = ({ name, email }, actions) => {
+    setIsFormVisible(false);
+    toast.success("Your order is accepted");
     actions.resetForm();
-    setIsThanksMessage(true);
-    setTimeout(() => {
-      setIsThanksMessage(false);
-      setIsFormVisible(false);
-    }, 3000);
-    const data = {
+    postOrder({
       name: name,
       email: email,
-      price: price,
+      price: totalPrice,
       shoes: [cartShoes],
-    };
-    postOrderData(data);
-    cartShoes.forEach((item) => {
-      toggleCartShoe(item.id, "false");
     });
-    setCartShoes([]);
-  };
-
-  const closeModalByEscape = (event) => {
-    if (event.code === "Escape") {
-      setIsFormVisible(false);
-    }
+    cartShoes.forEach((item) => {
+      dispatch(removeCartShoe({ id: item.id }));
+    });
   };
 
   return (
@@ -87,14 +87,6 @@ const CartModal = ({ setIsFormVisible, cartShoes, setCartShoes, price }) => {
           </svg>
         </button>
         <h2 className="cart__modal-title">Order</h2>
-        {isThanksMessage && (
-          <motion.h2
-            variants={cartThanksMessageVariants}
-            className="cart__modal-thanks-message"
-          >
-            Thanks for your order, we'll contact you for more details
-          </motion.h2>
-        )}
         <Formik
           validationSchema={validationSchema}
           onSubmit={(values, actions) => onFormSubmit(values, actions)}
@@ -131,11 +123,15 @@ const CartModal = ({ setIsFormVisible, cartShoes, setCartShoes, price }) => {
         </Formik>
         <div className="cart__modal-price">
           <h4>Total price:</h4>
-          <span>{price} €</span>
+          <span>{totalPrice} €</span>
         </div>
         <div className="cart__modal-buttons">
           <button onClick={() => setIsFormVisible(false)}>Back</button>
-          <button form="form" type="submit">
+          <button
+            disabled={totalPrice === 0 ? true : false}
+            form="form"
+            type="submit"
+          >
             Buy
           </button>
         </div>

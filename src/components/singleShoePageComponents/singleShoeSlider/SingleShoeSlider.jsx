@@ -1,5 +1,8 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+import { singleShoeSelector } from "../../../redux/slices/singleShoeSlice";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectFade, Pagination } from "swiper";
 
@@ -10,7 +13,11 @@ import "swiper/css/effect-fade";
 
 import "./singleShoeSlider.scss";
 
-const SingleShoeSlider = ({ images, title }) => {
+const SingleShoeSlider = () => {
+  const { shoe } = useSelector(singleShoeSelector);
+
+  const { images, title } = shoe;
+
   const slides = images.map((item) => {
     return (
       <SwiperSlide key={item} className="single-shoe-slide">

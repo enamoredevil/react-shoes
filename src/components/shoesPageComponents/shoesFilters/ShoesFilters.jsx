@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { filtersActions } from "../../../redux/slices/filtersSlice";
 
 import _ from "lodash";
 
@@ -7,14 +9,17 @@ import { animatedPanelVariants } from "../../../utils/framerMotion";
 
 import "./shoesFilters.scss";
 
-const ShoesFilters = ({ shoes, setFilterButton }) => {
+const ShoesFilters = ({ shoes }) => {
   const [activeButton, setActiveButton] = React.useState(-1);
+  const dispatch = useDispatch();
 
   const brands = _.uniq(shoes.map((item) => item.manufacturer));
 
   const onButtonClick = (event, index) => {
     setActiveButton(index);
-    setFilterButton(event.target.getAttribute("data-brand"));
+    dispatch(
+      filtersActions.setActiveFilter(event.target.getAttribute("data-brand"))
+    );
   };
 
   const buttons = brands.map((brand, index) => {

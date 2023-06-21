@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { removeFavoriteShoe } from "../../../redux/slices/favoriteShoesSlice";
+
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
@@ -6,8 +9,14 @@ import { animatedFavoritesItemVariants } from "../../../utils/framerMotion";
 
 import "./favoritesItem.scss";
 
-const FavoritesItem = ({ shoe, onShoeDelete }) => {
+const FavoritesItem = ({ shoe }) => {
   const { title, price, images, gender, id } = shoe;
+
+  const dispatch = useDispatch();
+
+  const onRemoveFavoriteShoe = () => {
+    dispatch(removeFavoriteShoe({ id }));
+  };
 
   return (
     <motion.div
@@ -32,7 +41,7 @@ const FavoritesItem = ({ shoe, onShoeDelete }) => {
         </Link>
 
         <button
-          onClick={() => onShoeDelete(id, "false")}
+          onClick={onRemoveFavoriteShoe}
           className="favorites__item-delete"
         >
           Remove
