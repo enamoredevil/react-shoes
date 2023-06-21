@@ -35,9 +35,11 @@ export const setShoesContent = (status, shoes) => {
       }
       return (
         <motion.div layout className="shoes__list">
-          {shoes.map((item) => {
-            return <ShoesItem key={item.id} item={item} />;
-          })}
+          {Array.isArray(shoes)
+            ? shoes.map((item) => {
+                return <ShoesItem key={item.id} item={item} />;
+              })
+            : []}
         </motion.div>
       );
     case "rejected":
@@ -88,9 +90,11 @@ export const setFavoritesShoeContent = (status, favShoes) => {
       return (
         <motion.div layout className="favorites__list">
           <AnimatePresence>
-            {favShoes.map((shoe) => {
-              return <FavoritesItem key={shoe.id} shoe={shoe} />;
-            })}
+            {Array.isArray(favShoes)
+              ? favShoes.map((shoe) => {
+                  return <FavoritesItem key={shoe.id} shoe={shoe} />;
+                })
+              : []}
           </AnimatePresence>
         </motion.div>
       );
@@ -111,7 +115,9 @@ export const setCartShoeContent = (status, cartShoes) => {
       if (cartShoes.length === 0) {
         return <CartEmpty />;
       }
-      return cartShoes.map((shoe) => <CartItem key={shoe.id} shoe={shoe} />);
+      return Array.isArray(cartShoes)
+        ? cartShoes.map((shoe) => <CartItem key={shoe.id} shoe={shoe} />)
+        : [];
     case "rejected":
       return <LoadingError />;
 
@@ -132,12 +138,14 @@ export const setCartHistoryContent = (status, orders) => {
       return orders.map((order, index) => {
         const { createdAt, name, price } = order;
 
-        return (
+        return Array.isArray(orders) ? (
           <motion.li variants={historyItemVariants} key={name + index}>
             <h5>{createdAt.slice(0, -14)}</h5>
             <span>Name: {name}</span>
             <span>Paid: {price} €</span>
           </motion.li>
+        ) : (
+          []
         );
       });
 
