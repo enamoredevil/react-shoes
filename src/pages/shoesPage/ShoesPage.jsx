@@ -27,9 +27,9 @@ import { animatedPagesVariants } from "../../utils/framerMotion";
 import "./shoesPage.scss";
 
 const ShoesPage = ({ gender }) => {
-  const dispatch = useDispatch(shoesSelector);
+  const dispatch = useDispatch();
 
-  const { shoes, status } = useSelector();
+  const { shoes, status } = useSelector(shoesSelector);
 
   const { activeFilter, activeSorter, searchString } =
     useSelector(filtersSelector);
