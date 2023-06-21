@@ -5,6 +5,8 @@
 **Stack:**
 
 - **ReactJS + hooks**
+- **Redux Toolkit**
+- **RTK Query**
 - **React Router V6**
 - **React Skeleton**
 - **React Swiper**
@@ -15,5 +17,5 @@
 - **Axios**
 - **SCSS**
 - **Formik**
-- **Yup** 
+- **Yup**
 - **Mock API**
