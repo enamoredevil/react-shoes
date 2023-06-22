@@ -1,6 +1,6 @@
 # React Shoes
 
-#### [React Shoes](https://shoes-cyan.vercel.app/) is an online shoes store
+#### [React Shoes]() is an online shoes store
 
 **Stack:**
 
