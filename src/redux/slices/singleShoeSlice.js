@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import ShoesService from "../../services/ShoesService";
 
 const initialState = {
-  shoe: [],
+  shoe: {},
   status: "idle",
   favorite: "idle",
   cart: "idle",
