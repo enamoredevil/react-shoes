@@ -10,16 +10,15 @@ const ShoesButton = ({ id, isFavorite }) => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    setIsAdded(isFavorite === "true" ? true : false);
+    setIsAdded(isFavorite);
   }, [isFavorite]);
 
   const onChangeFavorite = () => {
+    dispatch(changeFavoriteShoe({ id, action: isAdded ? "false" : "true" }));
     toast.success(
       isAdded ? "Removed from your favorites" : "Added to your favorites"
     );
     setIsAdded((isAdded) => !isAdded);
-    const action = isAdded ? "false" : "true";
-    dispatch(changeFavoriteShoe({ id, action }));
   };
 
   return (

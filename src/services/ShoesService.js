@@ -1,34 +1,32 @@
 import useHttp from "../hooks/http.hook";
 
 const ShoesService = () => {
-  const API_URL = process.env.REACT_APP_API_URL;
-
   const { getRequest, putRequest } = useHttp();
 
   const getAllShoes = async (gender) => {
-    return await getRequest(API_URL + "/sneakers", "get", { gender });
+    return await getRequest("/sneakers", "get", { gender });
   };
 
   const getSingleShoe = async (id) => {
-    return await getRequest(API_URL + `/sneakers/${id}`, "get");
+    return await getRequest(`/sneakers/${id}`, "get");
   };
 
   const getFavoriteShoes = async () => {
-    return await getRequest(API_URL + "/sneakers", "get", {
+    return await getRequest("/sneakers", "get", {
       isFavorite: "true",
     });
   };
 
   const toggleFavoriteShoe = (id, state) => {
-    putRequest(API_URL + `/sneakers/${id}`, { isFavorite: state });
+    putRequest(`/sneakers/${id}`, { isFavorite: state });
   };
 
   const getCartShoes = async () => {
-    return await getRequest(API_URL + "/sneakers", "get", { isCart: "true" });
+    return await getRequest("/sneakers", "get", { isCart: "true" });
   };
 
   const toggleCartShoe = (id, state) => {
-    putRequest(API_URL + `/sneakers/${id}`, { isCart: state });
+    putRequest(`/sneakers/${id}`, { isCart: state });
   };
 
   return {

@@ -26,7 +26,10 @@ const ShoesItem = ({ item }) => {
       <h2 className="shoes__item-title">{title}</h2>
       <span className="shoes__item-price">{price}</span>
       <div className="shoes__item-buttons">
-        <ShoesButton isFavorite={isFavorite} id={id} />
+        <ShoesButton
+          isFavorite={isFavorite === "true" ? true : false}
+          id={id}
+        />
         <Link className="shoes__item-more-link" to={`shoes/${item.id}`}>
           Read more
         </Link>
