@@ -20,14 +20,14 @@ export const fetchSingleShoe = createAsyncThunk(
 export const addSingleShoeToFavorites = createAsyncThunk(
   "singleShoe/addSingleShoeToFavorites",
   async (id) => {
-    return toggleFavoriteShoe(id, "true");
+    toggleFavoriteShoe(id, "true");
   }
 );
 
 export const addSingleShoeToCart = createAsyncThunk(
   "singleShoe/addSingleShoeToCart",
   async (id) => {
-    return toggleCartShoe(id, "true");
+    toggleCartShoe(id, "true");
   }
 );
 
@@ -49,23 +49,11 @@ const singleShoeSlice = createSlice({
       .addCase(fetchSingleShoe.rejected, (state) => {
         state.status = "rejected";
       })
-      .addCase(addSingleShoeToFavorites.pending, (state) => {
-        state.favorite = "pending";
-      })
       .addCase(addSingleShoeToFavorites.fulfilled, (state) => {
         state.favorite = "true";
       })
-      .addCase(addSingleShoeToFavorites.rejected, (state) => {
-        state.favorite = "false";
-      })
-      .addCase(addSingleShoeToCart.pending, (state) => {
-        state.cart = "pending";
-      })
       .addCase(addSingleShoeToCart.fulfilled, (state) => {
         state.cart = "true";
-      })
-      .addCase(addSingleShoeToCart.rejected, (state) => {
-        state.cart = "false";
       });
   },
 });
