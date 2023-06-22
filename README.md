@@ -12,6 +12,7 @@
 - **React Swiper**
 - **React Helmet**
 - **React Spinners**
+- **React Toastify**
 - **React Select**
 - **Framer Motion**
 - **Axios**
