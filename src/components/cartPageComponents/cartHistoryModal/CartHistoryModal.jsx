@@ -13,11 +13,11 @@ import "./cartHistoryModal.scss";
 const CartHistoryModal = ({ setIsHistoryVisible }) => {
   const { data: orders, status } = useGetOrdersQuery();
 
-  const closeModalByEscape = (event) => {
+  const closeModalByEscape = React.useCallback((event) => {
     if (event.code === "Escape") {
       setIsHistoryVisible(false);
     }
-  };
+  }, []);
 
   React.useEffect(() => {
     window.addEventListener("keydown", closeModalByEscape);

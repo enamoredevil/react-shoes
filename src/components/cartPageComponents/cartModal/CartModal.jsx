@@ -36,11 +36,11 @@ const CartModal = ({ setIsFormVisible }) => {
       .required("Email is required"),
   });
 
-  const closeModalByEscape = (event) => {
+  const closeModalByEscape = React.useCallback((event) => {
     if (event.code === "Escape") {
       setIsFormVisible(false);
     }
-  };
+  }, []);
 
   React.useEffect(() => {
     window.addEventListener("keydown", closeModalByEscape);
