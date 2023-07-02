@@ -36,11 +36,14 @@ const CartModal = ({ setIsFormVisible }) => {
       .required("Email is required"),
   });
 
-  const closeModalByEscape = React.useCallback((event) => {
-    if (event.code === "Escape") {
-      setIsFormVisible(false);
-    }
-  }, []);
+  const closeModalByEscape = React.useCallback(
+    (event) => {
+      if (event.code === "Escape") {
+        setIsFormVisible(false);
+      }
+    },
+    [setIsFormVisible]
+  );
 
   React.useEffect(() => {
     window.addEventListener("keydown", closeModalByEscape);
@@ -51,7 +54,7 @@ const CartModal = ({ setIsFormVisible }) => {
       enableBodyScroll(document.body);
       window.removeEventListener("keydown", closeModalByEscape);
     };
-  }, []);
+  }, [closeModalByEscape]);
 
   const onFormSubmit = ({ name, email }, actions) => {
     setIsFormVisible(false);
@@ -61,7 +64,7 @@ const CartModal = ({ setIsFormVisible }) => {
       name: name,
       email: email,
       price: totalPrice,
-      shoes: [cartShoes],
+      shoes: cartShoes,
     });
     cartShoes.forEach((item) => {
       dispatch(removeCartShoe({ id: item.id }));
